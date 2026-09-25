@@ -1,0 +1,676 @@
+18:59:44.556 [tid 6712] i2c_hook loaded
+18:59:44.613 [tid 8624] hook DeviceIoControl at 76E3AAE0: MH_OK
+18:59:44.656 [tid 8624] hook CreateFileW at 76E1E250: MH_OK
+18:59:44.704 [tid 8624] hook CreateFileA at 76E3DAC0: MH_OK
+18:59:44.704 [tid 8624] nvapi.dll at 5AFE0000, nvapi_QueryInterface=5B0C2B90
+18:59:44.704 [tid 8624] hook NvAPI_I2CRead: target not found
+18:59:44.751 [tid 8624] hook NvAPI_I2CWrite at 5B167560: MH_OK
+18:59:44.815 [tid 8624] hook NvAPI_I2CReadEx at 5B167340: MH_OK
+18:59:44.863 [tid 8624] hook NvAPI_I2CWriteEx at 5B167700: MH_OK
+18:59:44.863 [tid 8624] ready
+18:59:46.751 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=64 -> status 0
+18:59:46.751 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=64 -> status 0
+18:59:46.751 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=64 -> status 0
+18:59:46.766 [tid 28352] IOCTL    h=0000038C code=0x83002138 in[48]=00 00 00 00 8C CC C4 5B 0C 85 7F 0E 55 D9 96 5B A8 CC C4 5B 00 00 01 00 02 00 00 00 60 E5 77 00 A4 17 00 00 3E D8 96 5B C4 D8 B4 F4 00 00 00 00 -> ok=1 out[12]=00 00 00 00 40 50 DF BA 0C 85 7F 0E
+18:59:46.768 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=64 -> status 0
+18:59:46.770 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=44 len=1 data=20 -> status 0
+18:59:46.770 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=48 len=1 data=20 -> status 0
+18:59:49.846 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=64 -> status 0
+18:59:49.846 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=64 -> status 0
+18:59:49.846 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=64 -> status 0
+18:59:49.846 [tid 28352] IOCTL    h=0000038C code=0x83002138 in[48]=00 00 00 00 8C CC C4 5B 0C 85 7F 0E 55 D9 96 5B A8 CC C4 5B 00 00 01 00 02 00 00 00 60 E5 77 00 A4 17 00 00 3E D8 96 5B C4 D8 B4 F4 00 00 00 00 -> ok=1 out[12]=00 00 00 00 40 50 DF BA 0C 85 7F 0E
+18:59:49.846 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=64 -> status 0
+18:59:49.846 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=44 len=1 data=20 -> status 0
+18:59:49.846 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=48 len=1 data=20 -> status 0
+18:59:52.937 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=64 -> status 0
+18:59:52.939 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=64 -> status 0
+18:59:52.943 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=64 -> status 0
+18:59:52.945 [tid 28352] IOCTL    h=0000038C code=0x83002138 in[48]=00 00 00 00 8C CC C4 5B 0C 85 7F 0E 55 D9 96 5B A8 CC C4 5B 00 00 01 00 02 00 00 00 60 E5 77 00 A4 17 00 00 3E D8 96 5B C4 D8 B4 F4 00 00 00 00 -> ok=1 out[12]=00 00 00 00 40 50 DF BA 0C 85 7F 0E
+18:59:52.947 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=64 -> status 0
+18:59:52.948 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=44 len=1 data=20 -> status 0
+18:59:52.949 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=48 len=1 data=20 -> status 0
+18:59:56.022 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=64 -> status 0
+18:59:56.022 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=64 -> status 0
+18:59:56.022 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=64 -> status 0
+18:59:56.022 [tid 28352] IOCTL    h=0000038C code=0x83002138 in[48]=00 00 00 00 8C CC C4 5B 0C 85 7F 0E 55 D9 96 5B A8 CC C4 5B 00 00 01 00 02 00 00 00 60 E5 77 00 A4 17 00 00 3E D8 96 5B C4 D8 B4 F4 00 00 00 00 -> ok=1 out[12]=00 00 00 00 40 50 DF BA 0C 85 7F 0E
+18:59:56.022 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=64 -> status 0
+18:59:56.035 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=44 len=1 data=20 -> status 0
+18:59:56.035 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=48 len=1 data=20 -> status 0
+18:59:59.118 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=64 -> status 0
+18:59:59.118 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=64 -> status 0
+18:59:59.134 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=64 -> status 0
+18:59:59.134 [tid 28352] IOCTL    h=0000038C code=0x83002138 in[48]=00 00 00 00 8C CC C4 5B 0C 85 7F 0E 55 D9 96 5B A8 CC C4 5B 00 00 01 00 02 00 00 00 60 E5 77 00 A4 17 00 00 3E D8 96 5B C4 D8 B4 F4 00 00 00 00 -> ok=1 out[12]=00 00 00 00 40 50 DF BA 0C 85 7F 0E
+18:59:59.134 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=64 -> status 0
+18:59:59.139 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=44 len=1 data=20 -> status 0
+18:59:59.139 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=48 len=1 data=20 -> status 0
+19:00:02.217 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=64 -> status 0
+19:00:02.217 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=64 -> status 0
+19:00:02.217 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=64 -> status 0
+19:00:02.217 [tid 28352] IOCTL    h=0000038C code=0x83002138 in[48]=00 00 00 00 8C CC C4 5B 0C 85 7F 0E 55 D9 96 5B A8 CC C4 5B 00 00 01 00 02 00 00 00 60 E5 77 00 A4 17 00 00 3E D8 96 5B C4 D8 B4 F4 00 00 00 00 -> ok=1 out[12]=00 00 00 00 40 50 DF BA 0C 85 7F 0E
+19:00:02.217 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=64 -> status 0
+19:00:02.217 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=44 len=1 data=20 -> status 0
+19:00:02.217 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=48 len=1 data=20 -> status 0
+19:00:05.315 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=64 -> status 0
+19:00:05.315 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=64 -> status 0
+19:00:05.315 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=64 -> status 0
+19:00:05.315 [tid 28352] IOCTL    h=0000038C code=0x83002138 in[48]=00 00 00 00 8C CC C4 5B 0C 85 7F 0E 55 D9 96 5B A8 CC C4 5B 00 00 01 00 02 00 00 00 60 E5 77 00 A4 17 00 00 3E D8 96 5B C4 D8 B4 F4 00 00 00 00 -> ok=1 out[12]=00 00 00 00 40 50 DF BA 0C 85 7F 0E
+19:00:05.315 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=64 -> status 0
+19:00:05.315 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=44 len=1 data=20 -> status 0
+19:00:05.315 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=48 len=1 data=20 -> status 0
+19:00:07.601 [tid 32748] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=64 -> status 0
+19:00:07.614 [tid 12444] OPEN     \\.\PIPE\ASUS VGA FAN HELPER PIPE -> h=FFFFFFFF
+19:00:07.616 [tid 32748] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=40 len=1 data=02 -> status 0
+19:00:07.616 [tid 32748] WRITEEX  gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=43 len=1 data=00
+19:00:07.616 [tid 32748] WRITEEX -> status 0
+19:00:07.616 [tid 32748] WRITEEX  gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=47 len=1 data=00
+19:00:07.621 [tid 32748] WRITEEX -> status 0
+19:00:07.621 [tid 32748] WRITEEX  gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=00
+19:00:07.621 [tid 32748] WRITEEX -> status 0
+19:00:07.623 [tid 32748] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=00 -> status 0
+19:00:07.679 [tid 32748] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=00 -> status 0
+19:00:07.679 [tid 32748] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=00 -> status 0
+19:00:07.679 [tid 32748] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=00 -> status 0
+19:00:07.679 [tid 32748] IOCTL    h=0000038C code=0x83002138 in[48]=00 00 00 00 8C CC C4 5B 1C 6A 7E 01 55 D9 96 5B A8 CC C4 5B 00 00 01 00 02 00 00 00 28 ED 7E 01 A4 17 00 00 3E D8 96 5B B4 37 B5 FB 00 00 00 00 -> ok=1 out[12]=00 00 00 00 40 50 DF BA 1C 6A 7E 01
+19:00:07.679 [tid 32748] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=00 -> status 0
+19:00:07.679 [tid 32748] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=44 len=1 data=20 -> status 0
+19:00:07.679 [tid 32748] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=48 len=1 data=20 -> status 0
+19:00:08.411 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=00 -> status 0
+19:00:08.413 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=00 -> status 0
+19:00:08.418 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=00 -> status 0
+19:00:08.419 [tid 28352] IOCTL    h=0000038C code=0x83002138 in[48]=00 00 00 00 8C CC C4 5B 0C 85 7F 0E 55 D9 96 5B A8 CC C4 5B 00 00 01 00 02 00 00 00 60 E5 77 00 A4 17 00 00 3E D8 96 5B C4 D8 B4 F4 00 00 00 00 -> ok=1 out[12]=00 00 00 00 40 50 DF BA 0C 85 7F 0E
+19:00:08.421 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=00 -> status 0
+19:00:08.422 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=44 len=1 data=20 -> status 0
+19:00:08.423 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=48 len=1 data=20 -> status 0
+19:00:11.487 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=00 -> status 0
+19:00:11.487 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=00 -> status 0
+19:00:11.496 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=00 -> status 0
+19:00:11.499 [tid 28352] IOCTL    h=0000038C code=0x83002138 in[48]=00 00 00 00 8C CC C4 5B 0C 85 7F 0E 55 D9 96 5B A8 CC C4 5B 00 00 01 00 02 00 00 00 60 E5 77 00 A4 17 00 00 3E D8 96 5B C4 D8 B4 F4 00 00 00 00 -> ok=1 out[12]=00 00 00 00 40 50 DF BA 0C 85 7F 0E
+19:00:11.499 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=00 -> status 0
+19:00:11.503 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=44 len=1 data=00 -> status 0
+19:00:11.503 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=48 len=1 data=00 -> status 0
+19:00:14.575 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=00 -> status 0
+19:00:14.575 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=00 -> status 0
+19:00:14.575 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=00 -> status 0
+19:00:14.575 [tid 28352] IOCTL    h=0000038C code=0x83002138 in[48]=00 00 00 00 8C CC C4 5B 0C 85 7F 0E 55 D9 96 5B A8 CC C4 5B 00 00 01 00 02 00 00 00 60 E5 77 00 A4 17 00 00 3E D8 96 5B C4 D8 B4 F4 00 00 00 00 -> ok=1 out[12]=00 00 00 00 40 50 DF BA 0C 85 7F 0E
+19:00:14.575 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=00 -> status 0
+19:00:14.575 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=44 len=1 data=00 -> status 0
+19:00:14.575 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=48 len=1 data=00 -> status 0
+19:00:17.663 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=00 -> status 0
+19:00:17.663 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=00 -> status 0
+19:00:17.663 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=00 -> status 0
+19:00:17.663 [tid 28352] IOCTL    h=0000038C code=0x83002138 in[48]=00 00 00 00 8C CC C4 5B 0C 85 7F 0E 55 D9 96 5B A8 CC C4 5B 00 00 01 00 02 00 00 00 60 E5 77 00 A4 17 00 00 3E D8 96 5B C4 D8 B4 F4 00 00 00 00 -> ok=1 out[12]=00 00 00 00 40 50 DF BA 0C 85 7F 0E
+19:00:17.663 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=00 -> status 0
+19:00:17.663 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=44 len=1 data=00 -> status 0
+19:00:17.663 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=48 len=1 data=00 -> status 0
+19:00:20.747 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=00 -> status 0
+19:00:20.753 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=00 -> status 0
+19:00:20.765 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=00 -> status 0
+19:00:20.768 [tid 28352] IOCTL    h=0000038C code=0x83002138 in[48]=00 00 00 00 8C CC C4 5B 0C 85 7F 0E 55 D9 96 5B A8 CC C4 5B 00 00 01 00 02 00 00 00 60 E5 77 00 A4 17 00 00 3E D8 96 5B C4 D8 B4 F4 00 00 00 00 -> ok=1 out[12]=00 00 00 00 40 50 DF BA 0C 85 7F 0E
+19:00:20.770 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=00 -> status 0
+19:00:20.772 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=44 len=1 data=00 -> status 0
+19:00:20.773 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=48 len=1 data=00 -> status 0
+19:00:23.847 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=00 -> status 0
+19:00:23.847 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=00 -> status 0
+19:00:23.847 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=00 -> status 0
+19:00:23.847 [tid 28352] IOCTL    h=0000038C code=0x83002138 in[48]=00 00 00 00 8C CC C4 5B 0C 85 7F 0E 55 D9 96 5B A8 CC C4 5B 00 00 01 00 02 00 00 00 60 E5 77 00 A4 17 00 00 3E D8 96 5B C4 D8 B4 F4 00 00 00 00 -> ok=1 out[12]=00 00 00 00 40 50 DF BA 0C 85 7F 0E
+19:00:23.847 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=00 -> status 0
+19:00:23.847 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=44 len=1 data=00 -> status 0
+19:00:23.863 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=48 len=1 data=00 -> status 0
+19:00:26.944 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=00 -> status 0
+19:00:26.944 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=00 -> status 0
+19:00:26.944 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=00 -> status 0
+19:00:26.944 [tid 28352] IOCTL    h=0000038C code=0x83002138 in[48]=00 00 00 00 8C CC C4 5B 0C 85 7F 0E 55 D9 96 5B A8 CC C4 5B 00 00 01 00 02 00 00 00 60 E5 77 00 A4 17 00 00 3E D8 96 5B C4 D8 B4 F4 00 00 00 00 -> ok=1 out[12]=00 00 00 00 40 50 DF BA 0C 85 7F 0E
+19:00:26.944 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=00 -> status 0
+19:00:26.944 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=44 len=1 data=00 -> status 0
+19:00:26.944 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=48 len=1 data=00 -> status 0
+19:00:30.040 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=00 -> status 0
+19:00:30.040 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=00 -> status 0
+19:00:30.045 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=00 -> status 0
+19:00:30.045 [tid 28352] IOCTL    h=0000038C code=0x83002138 in[48]=00 00 00 00 8C CC C4 5B 0C 85 7F 0E 55 D9 96 5B A8 CC C4 5B 00 00 01 00 02 00 00 00 60 E5 77 00 A4 17 00 00 3E D8 96 5B C4 D8 B4 F4 00 00 00 00 -> ok=1 out[12]=00 00 00 00 40 50 DF BA 0C 85 7F 0E
+19:00:30.045 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=00 -> status 0
+19:00:30.045 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=44 len=1 data=00 -> status 0
+19:00:30.045 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=48 len=1 data=00 -> status 0
+19:00:33.152 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=00 -> status 0
+19:00:33.152 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=00 -> status 0
+19:00:33.152 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=00 -> status 0
+19:00:33.152 [tid 28352] IOCTL    h=0000038C code=0x83002138 in[48]=00 00 00 00 8C CC C4 5B 0C 85 7F 0E 55 D9 96 5B A8 CC C4 5B 00 00 01 00 02 00 00 00 60 E5 77 00 A4 17 00 00 3E D8 96 5B C4 D8 B4 F4 00 00 00 00 -> ok=1 out[12]=00 00 00 00 40 50 DF BA 0C 85 7F 0E
+19:00:33.152 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=00 -> status 0
+19:00:33.152 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=44 len=1 data=00 -> status 0
+19:00:33.152 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=48 len=1 data=00 -> status 0
+19:00:36.242 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=00 -> status 0
+19:00:36.242 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=00 -> status 0
+19:00:36.251 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=00 -> status 0
+19:00:36.251 [tid 28352] IOCTL    h=0000038C code=0x83002138 in[48]=00 00 00 00 8C CC C4 5B 0C 85 7F 0E 55 D9 96 5B A8 CC C4 5B 00 00 01 00 02 00 00 00 60 E5 77 00 A4 17 00 00 3E D8 96 5B C4 D8 B4 F4 00 00 00 00 -> ok=1 out[12]=00 00 00 00 40 50 DF BA 0C 85 7F 0E
+19:00:36.251 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=00 -> status 0
+19:00:36.255 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=44 len=1 data=00 -> status 0
+19:00:36.255 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=48 len=1 data=00 -> status 0
+19:00:39.334 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=00 -> status 0
+19:00:39.334 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=00 -> status 0
+19:00:39.334 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=00 -> status 0
+19:00:39.334 [tid 28352] IOCTL    h=0000038C code=0x83002138 in[48]=00 00 00 00 8C CC C4 5B 0C 85 7F 0E 55 D9 96 5B A8 CC C4 5B 00 00 01 00 02 00 00 00 60 E5 77 00 A4 17 00 00 3E D8 96 5B C4 D8 B4 F4 00 00 00 00 -> ok=1 out[12]=00 00 00 00 40 50 DF BA 0C 85 7F 0E
+19:00:39.334 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=00 -> status 0
+19:00:39.334 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=44 len=1 data=00 -> status 0
+19:00:39.334 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=48 len=1 data=00 -> status 0
+19:00:42.429 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=00 -> status 0
+19:00:42.429 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=00 -> status 0
+19:00:42.429 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=00 -> status 0
+19:00:42.429 [tid 28352] IOCTL    h=0000038C code=0x83002138 in[48]=00 00 00 00 8C CC C4 5B 0C 85 7F 0E 55 D9 96 5B A8 CC C4 5B 00 00 01 00 02 00 00 00 60 E5 77 00 A4 17 00 00 3E D8 96 5B C4 D8 B4 F4 00 00 00 00 -> ok=1 out[12]=00 00 00 00 40 50 DF BA 0C 85 7F 0E
+19:00:42.441 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=00 -> status 0
+19:00:42.441 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=44 len=1 data=00 -> status 0
+19:00:42.441 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=48 len=1 data=00 -> status 0
+19:00:45.530 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=00 -> status 0
+19:00:45.532 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=00 -> status 0
+19:00:45.536 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=00 -> status 0
+19:00:45.538 [tid 28352] IOCTL    h=0000038C code=0x83002138 in[48]=00 00 00 00 8C CC C4 5B 0C 85 7F 0E 55 D9 96 5B A8 CC C4 5B 00 00 01 00 02 00 00 00 60 E5 77 00 A4 17 00 00 3E D8 96 5B C4 D8 B4 F4 00 00 00 00 -> ok=1 out[12]=00 00 00 00 40 50 DF BA 0C 85 7F 0E
+19:00:45.538 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=00 -> status 0
+19:00:45.540 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=44 len=1 data=00 -> status 0
+19:00:45.542 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=48 len=1 data=00 -> status 0
+19:00:48.627 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=00 -> status 0
+19:00:48.627 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=00 -> status 0
+19:00:48.627 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=00 -> status 0
+19:00:48.627 [tid 28352] IOCTL    h=0000038C code=0x83002138 in[48]=00 00 00 00 8C CC C4 5B 0C 85 7F 0E 55 D9 96 5B A8 CC C4 5B 00 00 01 00 02 00 00 00 60 E5 77 00 A4 17 00 00 3E D8 96 5B C4 D8 B4 F4 00 00 00 00 -> ok=1 out[12]=00 00 00 00 40 50 DF BA 0C 85 7F 0E
+19:00:48.627 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=00 -> status 0
+19:00:48.627 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=44 len=1 data=00 -> status 0
+19:00:48.627 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=48 len=1 data=00 -> status 0
+19:00:51.718 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=00 -> status 0
+19:00:51.718 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=00 -> status 0
+19:00:51.718 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=00 -> status 0
+19:00:51.718 [tid 28352] IOCTL    h=0000038C code=0x83002138 in[48]=00 00 00 00 8C CC C4 5B 0C 85 7F 0E 55 D9 96 5B A8 CC C4 5B 00 00 01 00 02 00 00 00 60 E5 77 00 A4 17 00 00 3E D8 96 5B C4 D8 B4 F4 00 00 00 00 -> ok=1 out[12]=00 00 00 00 40 50 DF BA 0C 85 7F 0E
+19:00:51.729 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=00 -> status 0
+19:00:51.731 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=44 len=1 data=00 -> status 0
+19:00:51.731 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=48 len=1 data=00 -> status 0
+19:00:54.814 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=00 -> status 0
+19:00:54.814 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=00 -> status 0
+19:00:54.814 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=00 -> status 0
+19:00:54.814 [tid 28352] IOCTL    h=0000038C code=0x83002138 in[48]=00 00 00 00 8C CC C4 5B 0C 85 7F 0E 55 D9 96 5B A8 CC C4 5B 00 00 01 00 02 00 00 00 60 E5 77 00 A4 17 00 00 3E D8 96 5B C4 D8 B4 F4 00 00 00 00 -> ok=1 out[12]=00 00 00 00 40 50 DF BA 0C 85 7F 0E
+19:00:54.814 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=00 -> status 0
+19:00:54.814 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=44 len=1 data=00 -> status 0
+19:00:54.814 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=48 len=1 data=00 -> status 0
+19:00:57.906 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=00 -> status 0
+19:00:57.906 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=00 -> status 0
+19:00:57.906 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=00 -> status 0
+19:00:57.906 [tid 28352] IOCTL    h=0000038C code=0x83002138 in[48]=00 00 00 00 8C CC C4 5B 0C 85 7F 0E 55 D9 96 5B A8 CC C4 5B 00 00 01 00 02 00 00 00 60 E5 77 00 A4 17 00 00 3E D8 96 5B C4 D8 B4 F4 00 00 00 00 -> ok=1 out[12]=00 00 00 00 40 50 DF BA 0C 85 7F 0E
+19:00:57.906 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=00 -> status 0
+19:00:57.906 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=44 len=1 data=00 -> status 0
+19:00:57.906 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=48 len=1 data=00 -> status 0
+19:01:01.013 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=00 -> status 0
+19:01:01.013 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=00 -> status 0
+19:01:01.026 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=00 -> status 0
+19:01:01.026 [tid 28352] IOCTL    h=0000038C code=0x83002138 in[48]=00 00 00 00 8C CC C4 5B 0C 85 7F 0E 55 D9 96 5B A8 CC C4 5B 00 00 01 00 02 00 00 00 60 E5 77 00 A4 17 00 00 3E D8 96 5B C4 D8 B4 F4 00 00 00 00 -> ok=1 out[12]=00 00 00 00 40 50 DF BA 0C 85 7F 0E
+19:01:01.026 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=00 -> status 0
+19:01:01.026 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=44 len=1 data=00 -> status 0
+19:01:01.026 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=48 len=1 data=00 -> status 0
+19:01:04.113 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=00 -> status 0
+19:01:04.113 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=00 -> status 0
+19:01:04.113 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=00 -> status 0
+19:01:04.127 [tid 28352] IOCTL    h=0000038C code=0x83002138 in[48]=00 00 00 00 8C CC C4 5B 0C 85 7F 0E 55 D9 96 5B A8 CC C4 5B 00 00 01 00 02 00 00 00 60 E5 77 00 A4 17 00 00 3E D8 96 5B C4 D8 B4 F4 00 00 00 00 -> ok=1 out[12]=00 00 00 00 40 50 DF BA 0C 85 7F 0E
+19:01:04.127 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=00 -> status 0
+19:01:04.127 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=44 len=1 data=00 -> status 0
+19:01:04.127 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=48 len=1 data=00 -> status 0
+19:01:04.890 [tid 32748] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=00 -> status 0
+19:01:04.890 [tid 31264] OPEN     \\.\PIPE\ASUS VGA FAN HELPER PIPE -> h=FFFFFFFF
+19:01:04.890 [tid 32748] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=40 len=1 data=02 -> status 0
+19:01:04.890 [tid 32748] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=45 len=1 data=01 -> status 0
+19:01:04.890 [tid 32748] WRITEEX  gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=43 len=1 data=01
+19:01:04.890 [tid 32748] WRITEEX -> status 0
+19:01:04.890 [tid 32748] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=49 len=1 data=01 -> status 0
+19:01:04.890 [tid 32748] WRITEEX  gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=47 len=1 data=01
+19:01:04.903 [tid 32748] WRITEEX -> status 0
+19:01:04.903 [tid 32748] WRITEEX  gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=4D
+19:01:04.903 [tid 32748] WRITEEX -> status 0
+19:01:04.903 [tid 32748] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=4D -> status 0
+19:01:04.950 [tid 32748] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=4D -> status 0
+19:01:04.950 [tid 32748] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=4D -> status 0
+19:01:04.966 [tid 32748] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=4D -> status 0
+19:01:04.966 [tid 32748] IOCTL    h=0000038C code=0x83002138 in[48]=00 00 00 00 8C CC C4 5B 1C 6A 7E 01 55 D9 96 5B A8 CC C4 5B 00 00 01 00 02 00 00 00 28 ED 7E 01 A4 17 00 00 3E D8 96 5B B4 37 B5 FB 00 00 00 00 -> ok=1 out[12]=00 00 00 00 40 50 DF BA 1C 6A 7E 01
+19:01:04.966 [tid 32748] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=4D -> status 0
+19:01:04.966 [tid 32748] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=44 len=1 data=00 -> status 0
+19:01:04.966 [tid 32748] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=48 len=1 data=00 -> status 0
+19:01:07.213 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=4D -> status 0
+19:01:07.213 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=4D -> status 0
+19:01:07.218 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=4D -> status 0
+19:01:07.220 [tid 28352] IOCTL    h=0000038C code=0x83002138 in[48]=00 00 00 00 8C CC C4 5B 0C 85 7F 0E 55 D9 96 5B A8 CC C4 5B 00 00 01 00 02 00 00 00 60 E5 77 00 A4 17 00 00 3E D8 96 5B C4 D8 B4 F4 00 00 00 00 -> ok=1 out[12]=00 00 00 00 40 50 DF BA 0C 85 7F 0E
+19:01:07.220 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=4D -> status 0
+19:01:07.220 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=44 len=1 data=14 -> status 0
+19:01:07.220 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=48 len=1 data=15 -> status 0
+19:01:10.311 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=4D -> status 0
+19:01:10.311 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=4D -> status 0
+19:01:10.311 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=4D -> status 0
+19:01:10.311 [tid 28352] IOCTL    h=0000038C code=0x83002138 in[48]=00 00 00 00 8C CC C4 5B 0C 85 7F 0E 55 D9 96 5B A8 CC C4 5B 00 00 01 00 02 00 00 00 60 E5 77 00 A4 17 00 00 3E D8 96 5B C4 D8 B4 F4 00 00 00 00 -> ok=1 out[12]=00 00 00 00 40 50 DF BA 0C 85 7F 0E
+19:01:10.311 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=4D -> status 0
+19:01:10.311 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=44 len=1 data=19 -> status 0
+19:01:10.311 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=48 len=1 data=18 -> status 0
+19:01:13.409 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=4D -> status 0
+19:01:13.409 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=4D -> status 0
+19:01:13.424 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=4D -> status 0
+19:01:13.425 [tid 28352] IOCTL    h=0000038C code=0x83002138 in[48]=00 00 00 00 8C CC C4 5B 0C 85 7F 0E 55 D9 96 5B A8 CC C4 5B 00 00 01 00 02 00 00 00 60 E5 77 00 A4 17 00 00 3E D8 96 5B C4 D8 B4 F4 00 00 00 00 -> ok=1 out[12]=00 00 00 00 40 50 DF BA 0C 85 7F 0E
+19:01:13.425 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=4D -> status 0
+19:01:13.428 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=44 len=1 data=19 -> status 0
+19:01:13.429 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=48 len=1 data=19 -> status 0
+19:01:16.506 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=4D -> status 0
+19:01:16.508 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=4D -> status 0
+19:01:16.513 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=4D -> status 0
+19:01:16.513 [tid 28352] IOCTL    h=0000038C code=0x83002138 in[48]=00 00 00 00 8C CC C4 5B 0C 85 7F 0E 55 D9 96 5B A8 CC C4 5B 00 00 01 00 02 00 00 00 60 E5 77 00 A4 17 00 00 3E D8 96 5B C4 D8 B4 F4 00 00 00 00 -> ok=1 out[12]=00 00 00 00 40 50 DF BA 0C 85 7F 0E
+19:01:16.513 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=4D -> status 0
+19:01:16.513 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=44 len=1 data=19 -> status 0
+19:01:16.513 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=48 len=1 data=19 -> status 0
+19:01:19.600 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=4D -> status 0
+19:01:19.604 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=4D -> status 0
+19:01:19.606 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=4D -> status 0
+19:01:19.606 [tid 28352] IOCTL    h=0000038C code=0x83002138 in[48]=00 00 00 00 8C CC C4 5B 0C 85 7F 0E 55 D9 96 5B A8 CC C4 5B 00 00 01 00 02 00 00 00 60 E5 77 00 A4 17 00 00 3E D8 96 5B C4 D8 B4 F4 00 00 00 00 -> ok=1 out[12]=00 00 00 00 40 50 DF BA 0C 85 7F 0E
+19:01:19.606 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=4D -> status 0
+19:01:19.606 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=44 len=1 data=19 -> status 0
+19:01:19.606 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=48 len=1 data=18 -> status 0
+19:01:19.669 [tid 32748] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=4D -> status 0
+19:01:19.669 [tid 26148] OPEN     \\.\PIPE\ASUS VGA FAN HELPER PIPE -> h=FFFFFFFF
+19:01:19.687 [tid 32748] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=40 len=1 data=02 -> status 0
+19:01:19.687 [tid 32748] WRITEEX  gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=99
+19:01:19.687 [tid 32748] WRITEEX -> status 0
+19:01:19.687 [tid 32748] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=99 -> status 0
+19:01:19.727 [tid 32748] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=99 -> status 0
+19:01:19.742 [tid 32748] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=99 -> status 0
+19:01:19.742 [tid 32748] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=99 -> status 0
+19:01:19.742 [tid 32748] IOCTL    h=0000038C code=0x83002138 in[48]=00 00 00 00 8C CC C4 5B 1C 6A 7E 01 55 D9 96 5B A8 CC C4 5B 00 00 01 00 02 00 00 00 28 ED 7E 01 A4 17 00 00 3E D8 96 5B B4 37 B5 FB 00 00 00 00 -> ok=1 out[12]=00 00 00 00 40 50 DF BA 1C 6A 7E 01
+19:01:19.742 [tid 32748] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=99 -> status 0
+19:01:19.742 [tid 32748] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=44 len=1 data=19 -> status 0
+19:01:19.742 [tid 32748] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=48 len=1 data=18 -> status 0
+19:01:22.704 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=99 -> status 0
+19:01:22.707 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=99 -> status 0
+19:01:22.711 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=99 -> status 0
+19:01:22.713 [tid 28352] IOCTL    h=0000038C code=0x83002138 in[48]=00 00 00 00 8C CC C4 5B 0C 85 7F 0E 55 D9 96 5B A8 CC C4 5B 00 00 01 00 02 00 00 00 60 E5 77 00 A4 17 00 00 3E D8 96 5B C4 D8 B4 F4 00 00 00 00 -> ok=1 out[12]=00 00 00 00 40 50 DF BA 0C 85 7F 0E
+19:01:22.713 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=99 -> status 0
+19:01:22.713 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=44 len=1 data=2C -> status 0
+19:01:22.713 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=48 len=1 data=2A -> status 0
+19:01:25.799 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=99 -> status 0
+19:01:25.799 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=99 -> status 0
+19:01:25.799 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=99 -> status 0
+19:01:25.799 [tid 28352] IOCTL    h=0000038C code=0x83002138 in[48]=00 00 00 00 8C CC C4 5B 0C 85 7F 0E 55 D9 96 5B A8 CC C4 5B 00 00 01 00 02 00 00 00 60 E5 77 00 A4 17 00 00 3E D8 96 5B C4 D8 B4 F4 00 00 00 00 -> ok=1 out[12]=00 00 00 00 40 50 DF BA 0C 85 7F 0E
+19:01:25.799 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=99 -> status 0
+19:01:25.799 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=44 len=1 data=2F -> status 0
+19:01:25.799 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=48 len=1 data=2E -> status 0
+19:01:28.911 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=99 -> status 0
+19:01:28.911 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=99 -> status 0
+19:01:28.917 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=99 -> status 0
+19:01:28.917 [tid 28352] IOCTL    h=0000038C code=0x83002138 in[48]=00 00 00 00 8C CC C4 5B 0C 85 7F 0E 55 D9 96 5B A8 CC C4 5B 00 00 01 00 02 00 00 00 60 E5 77 00 A4 17 00 00 3E D8 96 5B C4 D8 B4 F4 00 00 00 00 -> ok=1 out[12]=00 00 00 00 40 50 DF BA 0C 85 7F 0E
+19:01:28.917 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=99 -> status 0
+19:01:28.917 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=44 len=1 data=2F -> status 0
+19:01:28.917 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=48 len=1 data=2E -> status 0
+19:01:32.011 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=99 -> status 0
+19:01:32.011 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=99 -> status 0
+19:01:32.011 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=99 -> status 0
+19:01:32.023 [tid 28352] IOCTL    h=0000038C code=0x83002138 in[48]=00 00 00 00 8C CC C4 5B 0C 85 7F 0E 55 D9 96 5B A8 CC C4 5B 00 00 01 00 02 00 00 00 60 E5 77 00 A4 17 00 00 3E D8 96 5B C4 D8 B4 F4 00 00 00 00 -> ok=1 out[12]=00 00 00 00 40 50 DF BA 0C 85 7F 0E
+19:01:32.023 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=99 -> status 0
+19:01:32.023 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=44 len=1 data=2F -> status 0
+19:01:32.023 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=48 len=1 data=2F -> status 0
+19:01:35.104 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=99 -> status 0
+19:01:35.104 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=99 -> status 0
+19:01:35.104 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=99 -> status 0
+19:01:35.104 [tid 28352] IOCTL    h=0000038C code=0x83002138 in[48]=00 00 00 00 8C CC C4 5B 0C 85 7F 0E 55 D9 96 5B A8 CC C4 5B 00 00 01 00 02 00 00 00 60 E5 77 00 A4 17 00 00 3E D8 96 5B C4 D8 B4 F4 00 00 00 00 -> ok=1 out[12]=00 00 00 00 40 50 DF BA 0C 85 7F 0E
+19:01:35.104 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=99 -> status 0
+19:01:35.104 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=44 len=1 data=2F -> status 0
+19:01:35.104 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=48 len=1 data=2E -> status 0
+19:01:38.210 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=99 -> status 0
+19:01:38.212 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=99 -> status 0
+19:01:38.216 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=99 -> status 0
+19:01:38.216 [tid 28352] IOCTL    h=0000038C code=0x83002138 in[48]=00 00 00 00 8C CC C4 5B 0C 85 7F 0E 55 D9 96 5B A8 CC C4 5B 00 00 01 00 02 00 00 00 60 E5 77 00 A4 17 00 00 3E D8 96 5B C4 D8 B4 F4 00 00 00 00 -> ok=1 out[12]=00 00 00 00 40 50 DF BA 0C 85 7F 0E
+19:01:38.216 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=99 -> status 0
+19:01:38.216 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=44 len=1 data=2F -> status 0
+19:01:38.216 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=48 len=1 data=2E -> status 0
+19:01:38.765 [tid 32748] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=99 -> status 0
+19:01:38.767 [tid 8256] OPEN     \\.\PIPE\ASUS VGA FAN HELPER PIPE -> h=FFFFFFFF
+19:01:38.771 [tid 32748] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=40 len=1 data=02 -> status 0
+19:01:38.771 [tid 32748] WRITEEX  gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=FF
+19:01:38.771 [tid 32748] WRITEEX -> status 0
+19:01:38.775 [tid 32748] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=FF -> status 0
+19:01:38.828 [tid 32748] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=FF -> status 0
+19:01:38.828 [tid 32748] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=FF -> status 0
+19:01:38.834 [tid 32748] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=FF -> status 0
+19:01:38.835 [tid 32748] IOCTL    h=0000038C code=0x83002138 in[48]=00 00 00 00 8C CC C4 5B 1C 6A 7E 01 55 D9 96 5B A8 CC C4 5B 00 00 01 00 02 00 00 00 28 ED 7E 01 A4 17 00 00 3E D8 96 5B B4 37 B5 FB 00 00 00 00 -> ok=1 out[12]=00 00 00 00 40 50 DF BA 1C 6A 7E 01
+19:01:38.835 [tid 32748] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=FF -> status 0
+19:01:38.837 [tid 32748] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=44 len=1 data=2F -> status 0
+19:01:38.837 [tid 32748] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=48 len=1 data=2E -> status 0
+19:01:41.301 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=FF -> status 0
+19:01:41.301 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=FF -> status 0
+19:01:41.306 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=FF -> status 0
+19:01:41.306 [tid 28352] IOCTL    h=0000038C code=0x83002138 in[48]=00 00 00 00 8C CC C4 5B 0C 85 7F 0E 55 D9 96 5B A8 CC C4 5B 00 00 01 00 02 00 00 00 60 E5 77 00 A4 17 00 00 3E D8 96 5B C4 D8 B4 F4 00 00 00 00 -> ok=1 out[12]=00 00 00 00 40 50 DF BA 0C 85 7F 0E
+19:01:41.306 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=FF -> status 0
+19:01:41.306 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=44 len=1 data=40 -> status 0
+19:01:41.306 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=48 len=1 data=43 -> status 0
+19:01:44.395 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=FF -> status 0
+19:01:44.398 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=FF -> status 0
+19:01:44.401 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=FF -> status 0
+19:01:44.401 [tid 28352] IOCTL    h=0000038C code=0x83002138 in[48]=00 00 00 00 8C CC C4 5B 0C 85 7F 0E 55 D9 96 5B A8 CC C4 5B 00 00 01 00 02 00 00 00 60 E5 77 00 A4 17 00 00 3E D8 96 5B C4 D8 B4 F4 00 00 00 00 -> ok=1 out[12]=00 00 00 00 40 50 DF BA 0C 85 7F 0E
+19:01:44.401 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=FF -> status 0
+19:01:44.408 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=44 len=1 data=48 -> status 0
+19:01:44.408 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=48 len=1 data=48 -> status 0
+19:01:47.491 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=FF -> status 0
+19:01:47.493 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=FF -> status 0
+19:01:47.499 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=FF -> status 0
+19:01:47.499 [tid 28352] IOCTL    h=0000038C code=0x83002138 in[48]=00 00 00 00 8C CC C4 5B 0C 85 7F 0E 55 D9 96 5B A8 CC C4 5B 00 00 01 00 02 00 00 00 60 E5 77 00 A4 17 00 00 3E D8 96 5B C4 D8 B4 F4 00 00 00 00 -> ok=1 out[12]=00 00 00 00 40 50 DF BA 0C 85 7F 0E
+19:01:47.501 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=FF -> status 0
+19:01:47.501 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=44 len=1 data=48 -> status 0
+19:01:47.501 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=48 len=1 data=47 -> status 0
+19:01:50.580 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=FF -> status 0
+19:01:50.580 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=FF -> status 0
+19:01:50.580 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=FF -> status 0
+19:01:50.595 [tid 28352] IOCTL    h=0000038C code=0x83002138 in[48]=00 00 00 00 8C CC C4 5B 0C 85 7F 0E 55 D9 96 5B A8 CC C4 5B 00 00 01 00 02 00 00 00 60 E5 77 00 A4 17 00 00 3E D8 96 5B C4 D8 B4 F4 00 00 00 00 -> ok=1 out[12]=00 00 00 00 40 50 DF BA 0C 85 7F 0E
+19:01:50.595 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=FF -> status 0
+19:01:50.595 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=44 len=1 data=48 -> status 0
+19:01:50.600 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=48 len=1 data=48 -> status 0
+19:01:53.689 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=FF -> status 0
+19:01:53.689 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=FF -> status 0
+19:01:53.689 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=FF -> status 0
+19:01:53.689 [tid 28352] IOCTL    h=0000038C code=0x83002138 in[48]=00 00 00 00 8C CC C4 5B 0C 85 7F 0E 55 D9 96 5B A8 CC C4 5B 00 00 01 00 02 00 00 00 60 E5 77 00 A4 17 00 00 3E D8 96 5B C4 D8 B4 F4 00 00 00 00 -> ok=1 out[12]=00 00 00 00 40 50 DF BA 0C 85 7F 0E
+19:01:53.689 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=FF -> status 0
+19:01:53.689 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=44 len=1 data=48 -> status 0
+19:01:53.689 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=48 len=1 data=47 -> status 0
+19:01:54.529 [tid 32748] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=5F -> status 0
+19:01:54.529 [tid 9856] OPEN     \\.\PIPE\ASUS VGA FAN HELPER PIPE -> h=FFFFFFFF
+19:01:54.548 [tid 32748] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=5F -> status 0
+19:01:54.598 [tid 32748] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=5F -> status 0
+19:01:54.598 [tid 32748] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=5F -> status 0
+19:01:54.604 [tid 32748] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=5F -> status 0
+19:01:54.606 [tid 32748] IOCTL    h=0000038C code=0x83002138 in[48]=00 00 00 00 8C CC C4 5B 1C 6A 7E 01 55 D9 96 5B A8 CC C4 5B 00 00 01 00 02 00 00 00 28 ED 7E 01 A4 17 00 00 3E D8 96 5B B4 37 B5 FB 00 00 00 00 -> ok=1 out[12]=00 00 00 00 40 50 DF BA 1C 6A 7E 01
+19:01:54.607 [tid 32748] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=5F -> status 0
+19:01:54.607 [tid 32748] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=44 len=1 data=48 -> status 0
+19:01:54.610 [tid 32748] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=48 len=1 data=47 -> status 0
+19:01:56.777 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=5F -> status 0
+19:01:56.777 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=5F -> status 0
+19:01:56.777 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=5F -> status 0
+19:01:56.777 [tid 28352] IOCTL    h=0000038C code=0x83002138 in[48]=00 00 00 00 8C CC C4 5B 0C 85 7F 0E 55 D9 96 5B A8 CC C4 5B 00 00 01 00 02 00 00 00 60 E5 77 00 A4 17 00 00 3E D8 96 5B C4 D8 B4 F4 00 00 00 00 -> ok=1 out[12]=00 00 00 00 40 50 DF BA 0C 85 7F 0E
+19:01:56.777 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=5F -> status 0
+19:01:56.777 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=44 len=1 data=2B -> status 0
+19:01:56.777 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=48 len=1 data=32 -> status 0
+19:01:59.877 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:01:59.877 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:01:59.877 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:01:59.877 [tid 28352] IOCTL    h=0000038C code=0x83002138 in[48]=00 00 00 00 8C CC C4 5B 0C 85 7F 0E 55 D9 96 5B A8 CC C4 5B 00 00 01 00 02 00 00 00 60 E5 77 00 A4 17 00 00 3E D8 96 5B C4 D8 B4 F4 00 00 00 00 -> ok=1 out[12]=00 00 00 00 40 50 DF BA 0C 85 7F 0E
+19:01:59.877 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:01:59.877 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=44 len=1 data=20 -> status 0
+19:01:59.877 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=48 len=1 data=20 -> status 0
+19:02:02.977 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:02:02.977 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:02:02.977 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:02:02.977 [tid 28352] IOCTL    h=0000038C code=0x83002138 in[48]=00 00 00 00 8C CC C4 5B 0C 85 7F 0E 55 D9 96 5B A8 CC C4 5B 00 00 01 00 02 00 00 00 60 E5 77 00 A4 17 00 00 3E D8 96 5B C4 D8 B4 F4 00 00 00 00 -> ok=1 out[12]=00 00 00 00 40 50 DF BA 0C 85 7F 0E
+19:02:02.977 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:02:02.987 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=44 len=1 data=1F -> status 0
+19:02:02.987 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=48 len=1 data=1F -> status 0
+19:02:06.066 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:02:06.071 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:02:06.076 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:02:06.076 [tid 28352] IOCTL    h=0000038C code=0x83002138 in[48]=00 00 00 00 8C CC C4 5B 0C 85 7F 0E 55 D9 96 5B A8 CC C4 5B 00 00 01 00 02 00 00 00 60 E5 77 00 A4 17 00 00 3E D8 96 5B C4 D8 B4 F4 00 00 00 00 -> ok=1 out[12]=00 00 00 00 40 50 DF BA 0C 85 7F 0E
+19:02:06.076 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:02:06.076 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=44 len=1 data=1F -> status 0
+19:02:06.076 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=48 len=1 data=1F -> status 0
+19:02:06.478 [tid 32748] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:02:06.489 [tid 28480] OPEN     \\.\PIPE\ASUS VGA FAN HELPER PIPE -> h=FFFFFFFF
+19:02:06.494 [tid 32748] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:02:06.543 [tid 32748] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:02:06.543 [tid 32748] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:02:06.549 [tid 32748] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:02:06.549 [tid 32748] IOCTL    h=0000038C code=0x83002138 in[48]=00 00 00 00 8C CC C4 5B 1C 6A 7E 01 55 D9 96 5B A8 CC C4 5B 00 00 01 00 02 00 00 00 28 ED 7E 01 A4 17 00 00 3E D8 96 5B B4 37 B5 FB 00 00 00 00 -> ok=1 out[12]=00 00 00 00 40 50 DF BA 1C 6A 7E 01
+19:02:06.551 [tid 32748] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:02:06.553 [tid 32748] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=44 len=1 data=1F -> status 0
+19:02:06.553 [tid 32748] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=48 len=1 data=1F -> status 0
+19:02:09.158 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=00 -> status 0
+19:02:09.158 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=00 -> status 0
+19:02:09.158 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=00 -> status 0
+19:02:09.158 [tid 28352] IOCTL    h=0000038C code=0x83002138 in[48]=00 00 00 00 8C CC C4 5B 0C 85 7F 0E 55 D9 96 5B A8 CC C4 5B 00 00 01 00 02 00 00 00 60 E5 77 00 A4 17 00 00 3E D8 96 5B C4 D8 B4 F4 00 00 00 00 -> ok=1 out[12]=00 00 00 00 40 50 DF BA 0C 85 7F 0E
+19:02:09.158 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=00 -> status 0
+19:02:09.158 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=44 len=1 data=00 -> status 0
+19:02:09.158 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=48 len=1 data=00 -> status 0
+19:02:12.251 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=00 -> status 0
+19:02:12.254 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=00 -> status 0
+19:02:12.260 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=00 -> status 0
+19:02:12.262 [tid 28352] IOCTL    h=0000038C code=0x83002138 in[48]=00 00 00 00 8C CC C4 5B 0C 85 7F 0E 55 D9 96 5B A8 CC C4 5B 00 00 01 00 02 00 00 00 60 E5 77 00 A4 17 00 00 3E D8 96 5B C4 D8 B4 F4 00 00 00 00 -> ok=1 out[12]=00 00 00 00 40 50 DF BA 0C 85 7F 0E
+19:02:12.262 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=00 -> status 0
+19:02:12.265 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=44 len=1 data=00 -> status 0
+19:02:12.266 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=48 len=1 data=00 -> status 0
+19:02:15.352 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=00 -> status 0
+19:02:15.353 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=00 -> status 0
+19:02:15.355 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=00 -> status 0
+19:02:15.355 [tid 28352] IOCTL    h=0000038C code=0x83002138 in[48]=00 00 00 00 8C CC C4 5B 0C 85 7F 0E 55 D9 96 5B A8 CC C4 5B 00 00 01 00 02 00 00 00 60 E5 77 00 A4 17 00 00 3E D8 96 5B C4 D8 B4 F4 00 00 00 00 -> ok=1 out[12]=00 00 00 00 40 50 DF BA 0C 85 7F 0E
+19:02:15.355 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=00 -> status 0
+19:02:15.355 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=44 len=1 data=00 -> status 0
+19:02:15.355 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=48 len=1 data=00 -> status 0
+19:02:18.445 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=00 -> status 0
+19:02:18.450 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=00 -> status 0
+19:02:18.463 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=00 -> status 0
+19:02:18.465 [tid 28352] IOCTL    h=0000038C code=0x83002138 in[48]=00 00 00 00 8C CC C4 5B 0C 85 7F 0E 55 D9 96 5B A8 CC C4 5B 00 00 01 00 02 00 00 00 60 E5 77 00 A4 17 00 00 3E D8 96 5B C4 D8 B4 F4 00 00 00 00 -> ok=1 out[12]=00 00 00 00 40 50 DF BA 0C 85 7F 0E
+19:02:18.465 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=00 -> status 0
+19:02:18.465 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=44 len=1 data=00 -> status 0
+19:02:18.465 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=48 len=1 data=00 -> status 0
+19:02:21.257 [tid 32748] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=00 -> status 0
+19:02:21.271 [tid 29236] OPEN     \\.\PIPE\ASUS VGA FAN HELPER PIPE -> h=FFFFFFFF
+19:02:21.277 [tid 32748] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=00 -> status 0
+19:02:21.333 [tid 32748] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=00 -> status 0
+19:02:21.333 [tid 32748] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=00 -> status 0
+19:02:21.339 [tid 32748] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=00 -> status 0
+19:02:21.339 [tid 32748] IOCTL    h=0000038C code=0x83002138 in[48]=00 00 00 00 8C CC C4 5B 1C 6A 7E 01 55 D9 96 5B A8 CC C4 5B 00 00 01 00 02 00 00 00 28 ED 7E 01 A4 17 00 00 3E D8 96 5B B4 37 B5 FB 00 00 00 00 -> ok=1 out[12]=00 00 00 00 40 50 DF BA 1C 6A 7E 01
+19:02:21.339 [tid 32748] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=00 -> status 0
+19:02:21.343 [tid 32748] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=44 len=1 data=00 -> status 0
+19:02:21.343 [tid 32748] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=48 len=1 data=00 -> status 0
+19:02:21.558 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=00 -> status 0
+19:02:21.558 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=00 -> status 0
+19:02:21.558 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=00 -> status 0
+19:02:21.558 [tid 28352] IOCTL    h=0000038C code=0x83002138 in[48]=00 00 00 00 8C CC C4 5B 0C 85 7F 0E 55 D9 96 5B A8 CC C4 5B 00 00 01 00 02 00 00 00 60 E5 77 00 A4 17 00 00 3E D8 96 5B C4 D8 B4 F4 00 00 00 00 -> ok=1 out[12]=00 00 00 00 40 50 DF BA 0C 85 7F 0E
+19:02:21.558 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=00 -> status 0
+19:02:21.558 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=44 len=1 data=00 -> status 0
+19:02:21.558 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=48 len=1 data=00 -> status 0
+19:02:24.646 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=5F -> status 0
+19:02:24.646 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=5F -> status 0
+19:02:24.661 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=5F -> status 0
+19:02:24.661 [tid 28352] IOCTL    h=0000038C code=0x83002138 in[48]=00 00 00 00 8C CC C4 5B 0C 85 7F 0E 55 D9 96 5B A8 CC C4 5B 00 00 01 00 02 00 00 00 60 E5 77 00 A4 17 00 00 3E D8 96 5B C4 D8 B4 F4 00 00 00 00 -> ok=1 out[12]=00 00 00 00 40 50 DF BA 0C 85 7F 0E
+19:02:24.661 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=5F -> status 0
+19:02:24.661 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=44 len=1 data=18 -> status 0
+19:02:24.674 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=48 len=1 data=1A -> status 0
+19:02:27.756 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:02:27.756 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:02:27.756 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:02:27.756 [tid 28352] IOCTL    h=0000038C code=0x83002138 in[48]=00 00 00 00 8C CC C4 5B 0C 85 7F 0E 55 D9 96 5B A8 CC C4 5B 00 00 01 00 02 00 00 00 60 E5 77 00 A4 17 00 00 3E D8 96 5B C4 D8 B4 F4 00 00 00 00 -> ok=1 out[12]=00 00 00 00 40 50 DF BA 0C 85 7F 0E
+19:02:27.756 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:02:27.756 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=44 len=1 data=1E -> status 0
+19:02:27.768 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=48 len=1 data=1E -> status 0
+19:02:30.851 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:02:30.851 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:02:30.851 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:02:30.851 [tid 28352] IOCTL    h=0000038C code=0x83002138 in[48]=00 00 00 00 8C CC C4 5B 0C 85 7F 0E 55 D9 96 5B A8 CC C4 5B 00 00 01 00 02 00 00 00 60 E5 77 00 A4 17 00 00 3E D8 96 5B C4 D8 B4 F4 00 00 00 00 -> ok=1 out[12]=00 00 00 00 40 50 DF BA 0C 85 7F 0E
+19:02:30.851 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:02:30.851 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=44 len=1 data=1F -> status 0
+19:02:30.851 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=48 len=1 data=1F -> status 0
+19:02:33.940 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:02:33.940 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:02:33.948 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:02:33.948 [tid 28352] IOCTL    h=0000038C code=0x83002138 in[48]=00 00 00 00 8C CC C4 5B 0C 85 7F 0E 55 D9 96 5B A8 CC C4 5B 00 00 01 00 02 00 00 00 60 E5 77 00 A4 17 00 00 3E D8 96 5B C4 D8 B4 F4 00 00 00 00 -> ok=1 out[12]=00 00 00 00 40 50 DF BA 0C 85 7F 0E
+19:02:33.948 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:02:33.948 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=44 len=1 data=1F -> status 0
+19:02:33.948 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=48 len=1 data=1F -> status 0
+19:02:37.031 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:02:37.031 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:02:37.031 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:02:37.031 [tid 28352] IOCTL    h=0000038C code=0x83002138 in[48]=00 00 00 00 8C CC C4 5B 0C 85 7F 0E 55 D9 96 5B A8 CC C4 5B 00 00 01 00 02 00 00 00 60 E5 77 00 A4 17 00 00 3E D8 96 5B C4 D8 B4 F4 00 00 00 00 -> ok=1 out[12]=00 00 00 00 40 50 DF BA 0C 85 7F 0E
+19:02:37.031 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:02:37.031 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=44 len=1 data=1F -> status 0
+19:02:37.031 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=48 len=1 data=1F -> status 0
+19:02:40.122 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:02:40.122 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:02:40.122 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:02:40.122 [tid 28352] IOCTL    h=0000038C code=0x83002138 in[48]=00 00 00 00 8C CC C4 5B 0C 85 7F 0E 55 D9 96 5B A8 CC C4 5B 00 00 01 00 02 00 00 00 60 E5 77 00 A4 17 00 00 3E D8 96 5B C4 D8 B4 F4 00 00 00 00 -> ok=1 out[12]=00 00 00 00 40 50 DF BA 0C 85 7F 0E
+19:02:40.122 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:02:40.122 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=44 len=1 data=1F -> status 0
+19:02:40.122 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=48 len=1 data=1F -> status 0
+19:02:43.212 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:02:43.214 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:02:43.216 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:02:43.221 [tid 28352] IOCTL    h=0000038C code=0x83002138 in[48]=00 00 00 00 8C CC C4 5B 0C 85 7F 0E 55 D9 96 5B A8 CC C4 5B 00 00 01 00 02 00 00 00 60 E5 77 00 A4 17 00 00 3E D8 96 5B C4 D8 B4 F4 00 00 00 00 -> ok=1 out[12]=00 00 00 00 40 50 DF BA 0C 85 7F 0E
+19:02:43.221 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:02:43.221 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=44 len=1 data=1F -> status 0
+19:02:43.221 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=48 len=1 data=1F -> status 0
+19:02:46.294 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:02:46.296 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:02:46.302 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:02:46.304 [tid 28352] IOCTL    h=0000038C code=0x83002138 in[48]=00 00 00 00 8C CC C4 5B 0C 85 7F 0E 55 D9 96 5B A8 CC C4 5B 00 00 01 00 02 00 00 00 60 E5 77 00 A4 17 00 00 3E D8 96 5B C4 D8 B4 F4 00 00 00 00 -> ok=1 out[12]=00 00 00 00 40 50 DF BA 0C 85 7F 0E
+19:02:46.306 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:02:46.306 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=44 len=1 data=1F -> status 0
+19:02:46.307 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=48 len=1 data=1F -> status 0
+19:02:49.383 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:02:49.385 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:02:49.389 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:02:49.389 [tid 28352] IOCTL    h=0000038C code=0x83002138 in[48]=00 00 00 00 8C CC C4 5B 0C 85 7F 0E 55 D9 96 5B A8 CC C4 5B 00 00 01 00 02 00 00 00 60 E5 77 00 A4 17 00 00 3E D8 96 5B C4 D8 B4 F4 00 00 00 00 -> ok=1 out[12]=00 00 00 00 40 50 DF BA 0C 85 7F 0E
+19:02:49.389 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:02:49.399 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=44 len=1 data=1F -> status 0
+19:02:49.400 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=48 len=1 data=1F -> status 0
+19:02:52.485 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:02:52.487 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:02:52.492 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:02:52.493 [tid 28352] IOCTL    h=0000038C code=0x83002138 in[48]=00 00 00 00 8C CC C4 5B 0C 85 7F 0E 55 D9 96 5B A8 CC C4 5B 00 00 01 00 02 00 00 00 60 E5 77 00 A4 17 00 00 3E D8 96 5B C4 D8 B4 F4 00 00 00 00 -> ok=1 out[12]=00 00 00 00 40 50 DF BA 0C 85 7F 0E
+19:02:52.495 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:02:52.495 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=44 len=1 data=1F -> status 0
+19:02:52.499 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=48 len=1 data=1F -> status 0
+19:02:55.574 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:02:55.576 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:02:55.583 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:02:55.585 [tid 28352] IOCTL    h=0000038C code=0x83002138 in[48]=00 00 00 00 8C CC C4 5B 0C 85 7F 0E 55 D9 96 5B A8 CC C4 5B 00 00 01 00 02 00 00 00 60 E5 77 00 A4 17 00 00 3E D8 96 5B C4 D8 B4 F4 00 00 00 00 -> ok=1 out[12]=00 00 00 00 40 50 DF BA 0C 85 7F 0E
+19:02:55.586 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:02:55.588 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=44 len=1 data=1F -> status 0
+19:02:55.589 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=48 len=1 data=1F -> status 0
+19:02:58.659 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:02:58.659 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:02:58.671 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:02:58.671 [tid 28352] IOCTL    h=0000038C code=0x83002138 in[48]=00 00 00 00 8C CC C4 5B 0C 85 7F 0E 55 D9 96 5B A8 CC C4 5B 00 00 01 00 02 00 00 00 60 E5 77 00 A4 17 00 00 3E D8 96 5B C4 D8 B4 F4 00 00 00 00 -> ok=1 out[12]=00 00 00 00 40 50 DF BA 0C 85 7F 0E
+19:02:58.671 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:02:58.671 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=44 len=1 data=1F -> status 0
+19:02:58.675 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=48 len=1 data=1E -> status 0
+19:03:01.759 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:03:01.761 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:03:01.771 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:03:01.772 [tid 28352] IOCTL    h=0000038C code=0x83002138 in[48]=00 00 00 00 8C CC C4 5B 0C 85 7F 0E 55 D9 96 5B A8 CC C4 5B 00 00 01 00 02 00 00 00 60 E5 77 00 A4 17 00 00 3E D8 96 5B C4 D8 B4 F4 00 00 00 00 -> ok=1 out[12]=00 00 00 00 40 50 DF BA 0C 85 7F 0E
+19:03:01.772 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:03:01.772 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=44 len=1 data=1F -> status 0
+19:03:01.772 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=48 len=1 data=1F -> status 0
+19:03:04.848 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:03:04.848 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:03:04.854 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:03:04.854 [tid 28352] IOCTL    h=0000038C code=0x83002138 in[48]=00 00 00 00 8C CC C4 5B 0C 85 7F 0E 55 D9 96 5B A8 CC C4 5B 00 00 01 00 02 00 00 00 60 E5 77 00 A4 17 00 00 3E D8 96 5B C4 D8 B4 F4 00 00 00 00 -> ok=1 out[12]=00 00 00 00 40 50 DF BA 0C 85 7F 0E
+19:03:04.856 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:03:04.856 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=44 len=1 data=1F -> status 0
+19:03:04.856 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=48 len=1 data=1E -> status 0
+19:03:07.941 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:03:07.941 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:03:07.941 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:03:07.941 [tid 28352] IOCTL    h=0000038C code=0x83002138 in[48]=00 00 00 00 8C CC C4 5B 0C 85 7F 0E 55 D9 96 5B A8 CC C4 5B 00 00 01 00 02 00 00 00 60 E5 77 00 A4 17 00 00 3E D8 96 5B C4 D8 B4 F4 00 00 00 00 -> ok=1 out[12]=00 00 00 00 40 50 DF BA 0C 85 7F 0E
+19:03:07.941 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:03:07.941 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=44 len=1 data=1F -> status 0
+19:03:07.941 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=48 len=1 data=1F -> status 0
+19:03:11.029 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:03:11.030 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:03:11.035 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:03:11.036 [tid 28352] IOCTL    h=0000038C code=0x83002138 in[48]=00 00 00 00 8C CC C4 5B 0C 85 7F 0E 55 D9 96 5B A8 CC C4 5B 00 00 01 00 02 00 00 00 60 E5 77 00 A4 17 00 00 3E D8 96 5B C4 D8 B4 F4 00 00 00 00 -> ok=1 out[12]=00 00 00 00 40 50 DF BA 0C 85 7F 0E
+19:03:11.042 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:03:11.044 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=44 len=1 data=1F -> status 0
+19:03:11.045 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=48 len=1 data=1F -> status 0
+19:03:14.116 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:03:14.117 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:03:14.121 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:03:14.125 [tid 28352] IOCTL    h=0000038C code=0x83002138 in[48]=00 00 00 00 8C CC C4 5B 0C 85 7F 0E 55 D9 96 5B A8 CC C4 5B 00 00 01 00 02 00 00 00 60 E5 77 00 A4 17 00 00 3E D8 96 5B C4 D8 B4 F4 00 00 00 00 -> ok=1 out[12]=00 00 00 00 40 50 DF BA 0C 85 7F 0E
+19:03:14.125 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:03:14.125 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=44 len=1 data=1F -> status 0
+19:03:14.125 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=48 len=1 data=1F -> status 0
+19:03:17.205 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:03:17.205 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:03:17.212 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:03:17.212 [tid 28352] IOCTL    h=0000038C code=0x83002138 in[48]=00 00 00 00 8C CC C4 5B 0C 85 7F 0E 55 D9 96 5B A8 CC C4 5B 00 00 01 00 02 00 00 00 60 E5 77 00 A4 17 00 00 3E D8 96 5B C4 D8 B4 F4 00 00 00 00 -> ok=1 out[12]=00 00 00 00 40 50 DF BA 0C 85 7F 0E
+19:03:17.212 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:03:17.212 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=44 len=1 data=1F -> status 0
+19:03:17.212 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=48 len=1 data=1F -> status 0
+19:03:20.307 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:03:20.307 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:03:20.308 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:03:20.308 [tid 28352] IOCTL    h=0000038C code=0x83002138 in[48]=00 00 00 00 8C CC C4 5B 0C 85 7F 0E 55 D9 96 5B A8 CC C4 5B 00 00 01 00 02 00 00 00 60 E5 77 00 A4 17 00 00 3E D8 96 5B C4 D8 B4 F4 00 00 00 00 -> ok=1 out[12]=00 00 00 00 40 50 DF BA 0C 85 7F 0E
+19:03:20.308 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:03:20.308 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=44 len=1 data=1F -> status 0
+19:03:20.308 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=48 len=1 data=1F -> status 0
+19:03:23.397 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:03:23.397 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:03:23.397 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:03:23.397 [tid 28352] IOCTL    h=0000038C code=0x83002138 in[48]=00 00 00 00 8C CC C4 5B 0C 85 7F 0E 55 D9 96 5B A8 CC C4 5B 00 00 01 00 02 00 00 00 60 E5 77 00 A4 17 00 00 3E D8 96 5B C4 D8 B4 F4 00 00 00 00 -> ok=1 out[12]=00 00 00 00 40 50 DF BA 0C 85 7F 0E
+19:03:23.397 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:03:23.397 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=44 len=1 data=1F -> status 0
+19:03:23.397 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=48 len=1 data=1F -> status 0
+19:03:26.491 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:03:26.492 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:03:26.497 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:03:26.499 [tid 28352] IOCTL    h=0000038C code=0x83002138 in[48]=00 00 00 00 8C CC C4 5B 0C 85 7F 0E 55 D9 96 5B A8 CC C4 5B 00 00 01 00 02 00 00 00 60 E5 77 00 A4 17 00 00 3E D8 96 5B C4 D8 B4 F4 00 00 00 00 -> ok=1 out[12]=00 00 00 00 40 50 DF BA 0C 85 7F 0E
+19:03:26.500 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:03:26.501 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=44 len=1 data=1F -> status 0
+19:03:26.502 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=48 len=1 data=1F -> status 0
+19:03:29.572 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:03:29.572 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:03:29.572 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:03:29.572 [tid 28352] IOCTL    h=0000038C code=0x83002138 in[48]=00 00 00 00 8C CC C4 5B 0C 85 7F 0E 55 D9 96 5B A8 CC C4 5B 00 00 01 00 02 00 00 00 60 E5 77 00 A4 17 00 00 3E D8 96 5B C4 D8 B4 F4 00 00 00 00 -> ok=1 out[12]=00 00 00 00 40 50 DF BA 0C 85 7F 0E
+19:03:29.572 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:03:29.572 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=44 len=1 data=1F -> status 0
+19:03:29.572 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=48 len=1 data=1F -> status 0
+19:03:32.672 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:03:32.673 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:03:32.679 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:03:32.679 [tid 28352] IOCTL    h=0000038C code=0x83002138 in[48]=00 00 00 00 8C CC C4 5B 0C 85 7F 0E 55 D9 96 5B A8 CC C4 5B 00 00 01 00 02 00 00 00 60 E5 77 00 A4 17 00 00 3E D8 96 5B C4 D8 B4 F4 00 00 00 00 -> ok=1 out[12]=00 00 00 00 40 50 DF BA 0C 85 7F 0E
+19:03:32.679 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:03:32.679 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=44 len=1 data=1F -> status 0
+19:03:32.679 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=48 len=1 data=1F -> status 0
+19:03:35.754 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:03:35.756 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:03:35.761 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:03:35.763 [tid 28352] IOCTL    h=0000038C code=0x83002138 in[48]=00 00 00 00 8C CC C4 5B 0C 85 7F 0E 55 D9 96 5B A8 CC C4 5B 00 00 01 00 02 00 00 00 60 E5 77 00 A4 17 00 00 3E D8 96 5B C4 D8 B4 F4 00 00 00 00 -> ok=1 out[12]=00 00 00 00 40 50 DF BA 0C 85 7F 0E
+19:03:35.764 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:03:35.765 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=44 len=1 data=1F -> status 0
+19:03:35.766 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=48 len=1 data=1F -> status 0
+19:03:38.840 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:03:38.842 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:03:38.853 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:03:38.853 [tid 28352] IOCTL    h=0000038C code=0x83002138 in[48]=00 00 00 00 8C CC C4 5B 0C 85 7F 0E 55 D9 96 5B A8 CC C4 5B 00 00 01 00 02 00 00 00 60 E5 77 00 A4 17 00 00 3E D8 96 5B C4 D8 B4 F4 00 00 00 00 -> ok=1 out[12]=00 00 00 00 40 50 DF BA 0C 85 7F 0E
+19:03:38.853 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:03:38.853 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=44 len=1 data=1F -> status 0
+19:03:38.853 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=48 len=1 data=1F -> status 0
+19:03:41.938 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:03:41.938 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:03:41.938 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:03:41.948 [tid 28352] IOCTL    h=0000038C code=0x83002138 in[48]=00 00 00 00 8C CC C4 5B 0C 85 7F 0E 55 D9 96 5B A8 CC C4 5B 00 00 01 00 02 00 00 00 60 E5 77 00 A4 17 00 00 3E D8 96 5B C4 D8 B4 F4 00 00 00 00 -> ok=1 out[12]=00 00 00 00 40 50 DF BA 0C 85 7F 0E
+19:03:41.950 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:03:41.950 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=44 len=1 data=1F -> status 0
+19:03:41.952 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=48 len=1 data=1F -> status 0
+19:03:45.027 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:03:45.027 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:03:45.027 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:03:45.027 [tid 28352] IOCTL    h=0000038C code=0x83002138 in[48]=00 00 00 00 8C CC C4 5B 0C 85 7F 0E 55 D9 96 5B A8 CC C4 5B 00 00 01 00 02 00 00 00 60 E5 77 00 A4 17 00 00 3E D8 96 5B C4 D8 B4 F4 00 00 00 00 -> ok=1 out[12]=00 00 00 00 40 50 DF BA 0C 85 7F 0E
+19:03:45.027 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:03:45.027 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=44 len=1 data=1F -> status 0
+19:03:45.027 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=48 len=1 data=1F -> status 0
+19:03:48.115 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:03:48.115 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:03:48.115 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:03:48.115 [tid 28352] IOCTL    h=0000038C code=0x83002138 in[48]=00 00 00 00 8C CC C4 5B 0C 85 7F 0E 55 D9 96 5B A8 CC C4 5B 00 00 01 00 02 00 00 00 60 E5 77 00 A4 17 00 00 3E D8 96 5B C4 D8 B4 F4 00 00 00 00 -> ok=1 out[12]=00 00 00 00 40 50 DF BA 0C 85 7F 0E
+19:03:48.115 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:03:48.115 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=44 len=1 data=1F -> status 0
+19:03:48.115 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=48 len=1 data=1E -> status 0
+19:03:51.208 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:03:51.210 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:03:51.215 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:03:51.217 [tid 28352] IOCTL    h=0000038C code=0x83002138 in[48]=00 00 00 00 8C CC C4 5B 0C 85 7F 0E 55 D9 96 5B A8 CC C4 5B 00 00 01 00 02 00 00 00 60 E5 77 00 A4 17 00 00 3E D8 96 5B C4 D8 B4 F4 00 00 00 00 -> ok=1 out[12]=00 00 00 00 40 50 DF BA 0C 85 7F 0E
+19:03:51.218 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:03:51.219 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=44 len=1 data=1F -> status 0
+19:03:51.221 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=48 len=1 data=1F -> status 0
+19:03:54.298 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:03:54.298 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:03:54.298 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:03:54.298 [tid 28352] IOCTL    h=0000038C code=0x83002138 in[48]=00 00 00 00 8C CC C4 5B 0C 85 7F 0E 55 D9 96 5B A8 CC C4 5B 00 00 01 00 02 00 00 00 60 E5 77 00 A4 17 00 00 3E D8 96 5B C4 D8 B4 F4 00 00 00 00 -> ok=1 out[12]=00 00 00 00 40 50 DF BA 0C 85 7F 0E
+19:03:54.298 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:03:54.310 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=44 len=1 data=1F -> status 0
+19:03:54.311 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=48 len=1 data=1F -> status 0
+19:03:57.384 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:03:57.384 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:03:57.384 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:03:57.384 [tid 28352] IOCTL    h=0000038C code=0x83002138 in[48]=00 00 00 00 8C CC C4 5B 0C 85 7F 0E 55 D9 96 5B A8 CC C4 5B 00 00 01 00 02 00 00 00 60 E5 77 00 A4 17 00 00 3E D8 96 5B C4 D8 B4 F4 00 00 00 00 -> ok=1 out[12]=00 00 00 00 40 50 DF BA 0C 85 7F 0E
+19:03:57.384 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=41 len=1 data=61 -> status 0
+19:03:57.384 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=44 len=1 data=1F -> status 0
+19:03:57.384 [tid 28352] READEX   gpu=00000A00 v3 port=1 portSet=1 ddc=0 addr=0x54(7bit 0x2A) disp=0x0 speedKhz=4 reg[1]=48 len=1 data=1F -> status 0

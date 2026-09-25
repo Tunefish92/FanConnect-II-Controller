@@ -1,0 +1,5 @@
+# Rust build output
+/target/
+
+# Built Windows capture tool (build it with tools/i2c-hook/build.cmd)
+/tools/i2c-hook/out/

@@ -1,0 +1,64 @@
+# Builds and tests Windows and Linux, and attaches the packages to a GitHub release.
+# Runs when a release is published, or by hand for an existing release tag.
+name: Release
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Existing release tag to build and upload (e.g. v0.1.0)
+        required: true
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    name: ${{ matrix.name }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: windows-latest
+            name: windows-x64
+          - os: ubuntu-latest
+            name: linux-x64
+    runs-on: ${{ matrix.os }}
+    env:
+      TAG: ${{ github.event.release.tag_name || inputs.tag }}
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: ${{ env.TAG }}
+
+      - uses: dtolnay/rust-toolchain@stable
+
+      - name: Test
+        run: cargo test --release
+
+      - name: Build
+        run: cargo build --release
+
+      - name: Package and upload (Windows)
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: |
+          $name = "FanConnect-II-Controller-$env:TAG-windows-x64"
+          New-Item -ItemType Directory $name | Out-Null
+          Copy-Item target/release/gpu-fanctl.exe, target/release/gpu-fanctl-gui.exe, README.md, CHANGELOG.md $name
+          Compress-Archive -Path $name -DestinationPath "$name.zip"
+          "$((Get-FileHash "$name.zip" -Algorithm SHA256).Hash.ToLower())  $name.zip" | Out-File -Encoding ascii "$name.zip.sha256"
+          gh release upload $env:TAG "$name.zip" "$name.zip.sha256" --clobber
+
+      - name: Package and upload (Linux)
+        if: runner.os == 'Linux'
+        run: |
+          name="FanConnect-II-Controller-${TAG}-linux-x64"
+          mkdir "$name"
+          cp target/release/gpu-fanctl target/release/gpu-fanctl-gui README.md CHANGELOG.md "$name"/
+          tar -czf "$name.tar.gz" "$name"
+          sha256sum "$name.tar.gz" > "$name.tar.gz.sha256"
+          gh release upload "$TAG" "$name.tar.gz" "$name.tar.gz.sha256" --clobber

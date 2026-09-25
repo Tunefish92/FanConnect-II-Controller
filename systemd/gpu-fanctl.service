@@ -1,0 +1,14 @@
+# Reference copy for manual setups. `gpu-fanctl install` writes this unit itself
+# (to /etc/systemd/system/gpu-fanctl.service, running /usr/local/bin/gpu-fanctl).
+[Unit]
+Description=FanConnect II Controller (ASUS ROG Strix RTX 2080 Ti external fans)
+After=systemd-modules-load.service
+
+[Service]
+ExecStartPre=-/usr/bin/modprobe i2c-dev
+ExecStart=/usr/local/bin/gpu-fanctl run
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target

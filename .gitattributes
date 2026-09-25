@@ -1,0 +1,9 @@
+# Normalise text to LF in the repository.
+* text=auto
+
+# Scripts must keep the line endings their shell expects, whatever the checkout platform.
+*.sh text eol=lf
+*.service text eol=lf
+*.cmd text eol=crlf
+
+*.png binary
