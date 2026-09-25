@@ -4,12 +4,6 @@ All notable changes to FanConnect II Controller are listed here.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and the project uses
 [Semantic Versioning](https://semver.org/).
 
-## [Unreleased]
-
-### Added
-
-- MIT license.
-
 ## [0.1.0] - 2026-09-25
 
 First release.
@@ -40,3 +34,4 @@ First release.
 - Crash report file when the app closes unexpectedly (`gpu-fanctl-gui-crash.log` in the temp folder).
 - Research tools: a read-only Linux probe, a Linux write test, and a Windows hook that records
   GPU Tweak III's I2C traffic.
+- Released under the MIT license.
