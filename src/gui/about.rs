@@ -76,7 +76,8 @@ fn chevron(ui: &mut egui::Ui, openness: f32, color: Color32) {
 }
 
 /// One release as a framed row that opens on click. All releases start closed.
-fn release(ui: &mut egui::Ui, index: usize, title: &str, blocks: &[Block]) {
+/// `latest`: the newest published release (not "Unreleased"), marked with a badge.
+fn release(ui: &mut egui::Ui, index: usize, title: &str, blocks: &[Block], latest: bool) {
     let p = Palette::current(ui.ctx());
     let (version, date) = title.split_once(" - ").unwrap_or((title, ""));
     let id = ui.make_persistent_id(("release", index));
@@ -92,11 +93,15 @@ fn release(ui: &mut egui::Ui, index: usize, title: &str, blocks: &[Block]) {
             let header = ui
                 .horizontal(|ui| {
                     chevron(ui, state.openness(ui.ctx()), p.weak);
-                    ui.label(RichText::new(format!("Version {version}")).size(16.0).strong());
+                    let label =
+                        if version == "Unreleased" { "Unreleased changes".to_string() } else { format!("Version {version}") };
+                    ui.label(RichText::new(label).size(16.0).strong());
                     if !date.is_empty() {
                         ui.label(RichText::new(date).weak());
                     }
-                    if index == 0 {
+                    if version == "Unreleased" {
+                        badge(ui, "Upcoming", p.warn);
+                    } else if latest {
                         badge(ui, "Latest", p.accent);
                     }
                     // Stretch the clickable header across the whole row.
@@ -138,8 +143,10 @@ fn release(ui: &mut egui::Ui, index: usize, title: &str, blocks: &[Block]) {
 
 fn changelog(ui: &mut egui::Ui) {
     card_title(ui, "Changelog", "What changed in each version, newest first. Click a version to open it.");
-    for (index, (title, blocks)) in releases().iter().enumerate() {
-        release(ui, index, title, blocks);
+    let releases = releases();
+    let latest = releases.iter().position(|(title, _)| title != "Unreleased");
+    for (index, (title, blocks)) in releases.iter().enumerate() {
+        release(ui, index, title, blocks, Some(index) == latest);
     }
 }
 
@@ -174,6 +181,8 @@ pub fn page(ui: &mut egui::Ui, icon: &egui::TextureHandle) {
         ui.separator();
         ui.horizontal_wrapped(|ui| {
             ui.label(RichText::new(format!("© {} {AUTHOR}", current_year())).strong());
+            ui.label(RichText::new("·").weak());
+            ui.label(format!("{} License", env!("CARGO_PKG_LICENSE")));
             ui.label(RichText::new("·").weak());
             ui.hyperlink_to(REPOSITORY.trim_start_matches("https://"), REPOSITORY);
         });

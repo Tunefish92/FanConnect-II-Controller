@@ -294,4 +294,5 @@ trademarks of NVIDIA Corporation.
 
 ## License
 
-No license has been chosen yet.
+[MIT](LICENSE) © 2026 Tunefish. The bundled [MinHook](tools/i2c-hook/third_party/minhook/LICENSE.txt)
+source in the capture tool keeps its own BSD license.
