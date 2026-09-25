@@ -48,9 +48,11 @@ jobs:
         run: |
           $name = "FanConnect-II-Controller-$env:TAG-windows-x64"
           New-Item -ItemType Directory $name | Out-Null
-          Copy-Item target/release/gpu-fanctl.exe, target/release/gpu-fanctl-gui.exe, README.md, CHANGELOG.md $name
+          Copy-Item target/release/gpu-fanctl.exe, target/release/gpu-fanctl-gui.exe, README.md, CHANGELOG.md, LICENSE $name
           Compress-Archive -Path $name -DestinationPath "$name.zip"
-          "$((Get-FileHash "$name.zip" -Algorithm SHA256).Hash.ToLower())  $name.zip" | Out-File -Encoding ascii "$name.zip.sha256"
+          # LF line ending, so `sha256sum -c` accepts the file on any system.
+          $hash = (Get-FileHash "$name.zip" -Algorithm SHA256).Hash.ToLower()
+          [IO.File]::WriteAllText("$PWD/$name.zip.sha256", "$hash  $name.zip`n")
           gh release upload $env:TAG "$name.zip" "$name.zip.sha256" --clobber
 
       - name: Package and upload (Linux)
@@ -58,7 +60,7 @@ jobs:
         run: |
           name="FanConnect-II-Controller-${TAG}-linux-x64"
           mkdir "$name"
-          cp target/release/gpu-fanctl target/release/gpu-fanctl-gui README.md CHANGELOG.md "$name"/
+          cp target/release/gpu-fanctl target/release/gpu-fanctl-gui README.md CHANGELOG.md LICENSE "$name"/
           tar -czf "$name.tar.gz" "$name"
           sha256sum "$name.tar.gz" > "$name.tar.gz.sha256"
           gh release upload "$TAG" "$name.tar.gz" "$name.tar.gz.sha256" --clobber
