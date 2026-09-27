@@ -27,6 +27,7 @@ service does the controlling. The desktop app shows live data and edits the sett
 - [Troubleshooting](#troubleshooting)
 - [Adding support for another card](#adding-support-for-another-card)
 - [Development](#development)
+- [Buy me a coffee](#buy-me-a-coffee)
 
 ## Features
 
@@ -309,6 +310,17 @@ minutes, don't touch the window meanwhile):
 ## Changelog
 
 See [CHANGELOG.md](CHANGELOG.md). The same list is shown on the app's About page.
+
+## Buy me a coffee
+
+FanConnect II Controller is free and open source, and it will stay that way. If it keeps your case
+fans quiet and you'd like to say thanks, you can buy me a coffee:
+
+**☕ [paypal.me/tunefish92](https://paypal.me/tunefish92)**
+
+It's entirely voluntary and a thank-you only: it doesn't buy features, priority support or a
+warranty, and the software stays under the MIT license either way. Please don't send money as
+"Friends and Family" on PayPal.
 
 ## Credits
 
