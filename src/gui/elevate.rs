@@ -49,7 +49,7 @@ pub fn start(action: &'static str, ctx: egui::Context) -> Job {
 /// Runs the action and returns its outcome. The elevated program writes "ok" or its error into
 /// a result file in a private folder (a folder, because Linux may not let root write into a
 /// user's file directly in /tmp).
-fn run_elevated(exe: &Path, action: &str) -> Result<(), String> {
+pub fn run_elevated(exe: &Path, action: &str) -> Result<(), String> {
     let dir = env::temp_dir().join(format!("gpu-fanctl-{action}-{}", std::process::id()));
     let _ = fs::remove_dir_all(&dir);
     fs::create_dir_all(&dir).map_err(|e| format!("Could not create {}: {e}", dir.display()))?;

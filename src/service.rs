@@ -138,6 +138,13 @@ fn copy_to_install_dir() -> Result<std::path::PathBuf> {
             let source = source_dir.join(name);
             if source.exists() {
                 let target = target_dir.join(name);
+                // A running program can't be overwritten, but it can be renamed: move the old one
+                // aside (the app removes it once it no longer runs), then copy.
+                let old = target_dir.join(format!("{name}.old"));
+                let _ = std::fs::remove_file(&old);
+                if target.exists() {
+                    let _ = std::fs::rename(&target, &old);
+                }
                 std::fs::copy(&source, &target).with_context(|| {
                     format!("copying {name} to {} (is the installed app still open?)", target_dir.display())
                 })?;

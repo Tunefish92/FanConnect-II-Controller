@@ -15,10 +15,17 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
   goes back to duty.
 - A banner at the top of the Fan curve page shows whether the fans are calibrated, and the
   progress while a calibration runs.
+- Update check and updater in the app: at startup the app looks for a newer GitHub release and
+  says so on the Overview and in the sidebar. Settings → Updates shows the release notes and
+  updates with one click: it downloads the package for Windows or Linux, verifies its SHA-256
+  checksum, reinstalls the service and the app with the new version (one administrator prompt)
+  and restarts the app.
 
 ### Changed
 
 - The README links the prebuilt release packages.
+- Installing on Windows moves a running copy of the programs aside instead of failing, so an
+  update can replace the app that started it.
 
 ## [0.1.0] - 2026-09-25
 

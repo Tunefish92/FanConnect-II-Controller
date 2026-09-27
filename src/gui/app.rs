@@ -13,6 +13,7 @@ use gpu_fanctl::fanconnect::{MODE_AUTO, MODE_HOST};
 
 use crate::live::{self, Live, ServiceState, Source};
 use crate::theme::{self, Palette, ThemeChoice};
+use crate::update::{self, Check, Install, Updater};
 use crate::widgets::{self, card, card_title, danger_button, primary_button, secondary_button};
 
 /// How close (°C / %) the pointer must be to grab a curve point.
@@ -61,6 +62,7 @@ pub struct App {
     message: Option<(String, bool)>,
     calibration_message: Option<(String, bool)>,
     service: ServicePanel,
+    updater: Updater,
 }
 
 #[derive(Default)]
@@ -136,6 +138,9 @@ impl App {
         cc.egui_ctx.set_theme(theme.preference());
 
         let live = live::spawn(cc.egui_ctx.clone());
+        update::cleanup();
+        let updater = Updater::default();
+        updater.check(&cc.egui_ctx);
         let (saved, warning) = config::load(&config::path());
         let icon = cc.egui_ctx.load_texture(
             "app-icon",
@@ -158,6 +163,7 @@ impl App {
             message: warning.map(|w| (w, true)),
             calibration_message: None,
             service: ServicePanel { installed_path: gpu_fanctl::service::installed_path(), ..Default::default() },
+            updater,
         };
         app.load_into_editor(&saved);
         app
@@ -301,6 +307,7 @@ impl eframe::App for App {
                         Page::Overview => {
                             widgets::page_header(ui, "Overview", "Live readings from the card and the fan service");
                             status_banners(ui, &live);
+                            self.update_banner(ui);
                             stat_cards(ui, &live, self.saved.calibration.as_ref());
                             card(ui, |ui| history_card(ui, &live, self.saved.calibration.as_ref()));
                         }
@@ -323,7 +330,7 @@ impl eframe::App for App {
                             card(ui, |ui| self.service_card(ui, &live));
                         }
                         Page::Settings => {
-                            widgets::page_header(ui, "Settings", "Appearance and file locations");
+                            widgets::page_header(ui, "Settings", "Updates, appearance and file locations");
                             self.settings_page(ui);
                         }
                         Page::About => {
@@ -908,6 +915,12 @@ impl App {
                     // lines are therefore added last-to-first. Centred horizontally.
                     ui.with_layout(egui::Layout::bottom_up(egui::Align::Center), |ui| {
                         ui.spacing_mut().item_spacing.y = 4.0;
+                        if let Some(release) = self.updater.available() {
+                            let link = egui::Link::new(RichText::new(format!("⬆ Update to {}", release.version)).small().color(p.accent));
+                            if ui.add(link).clicked() {
+                                self.page = Page::Settings;
+                            }
+                        }
                         if let Some(s) = &live.latest {
                             let temp = s.gpu_temp.map_or("–".into(), |t| format!("{t:.0} °C"));
                             let fans = shown_percent(self.saved.calibration.as_ref(), s.duty);
@@ -931,7 +944,89 @@ impl App {
         });
     }
 
+    fn update_banner(&mut self, ui: &mut egui::Ui) {
+        let Some(release) = self.updater.available() else { return };
+        let p = Palette::current(ui.ctx());
+        widgets::banner(ui, p.accent, |ui| {
+            ui.label(RichText::new("⬆").color(p.accent).strong());
+            ui.label(RichText::new(format!("Version {} is available.", release.version)).strong());
+            ui.label(RichText::new(format!("You have {}.", update::CURRENT)).weak());
+            if ui.link("View update").clicked() {
+                self.page = Page::Settings;
+            }
+        });
+    }
+
+    fn updates_card(&mut self, ui: &mut egui::Ui) {
+        let p = Palette::current(ui.ctx());
+        card_title(ui, "Updates", "New versions from the GitHub releases");
+        let check = self.updater.check_state();
+        let install = self.updater.install_state();
+        let installing = self.updater.is_installing();
+        let latest = match &check {
+            None => "Not checked".to_string(),
+            Some(Check::Checking) => "Checking…".to_string(),
+            Some(Check::UpToDate { latest }) => format!("{latest} (you're up to date)"),
+            Some(Check::Available(release)) => format!("{} (new)", release.version),
+            Some(Check::Failed(_)) => "Unknown".to_string(),
+        };
+        widgets::info_grid(ui, "updates", &[("This version", update::CURRENT.to_string()), ("Latest release", latest)]);
+        if let Some(Check::Failed(e)) = &check {
+            ui.label(RichText::new(e).color(p.danger));
+        }
+
+        if let Some(release) = self.updater.available() {
+            egui::CollapsingHeader::new(format!("What's new in {}", release.version)).id_salt("release-notes").show(ui, |ui| {
+                // The notes are Markdown; shown as plain text without the emphasis marks.
+                ui.label(RichText::new(release.notes.replace("**", "").replace('`', "")).weak());
+            });
+            ui.hyperlink_to("Release page on GitHub", &release.page);
+            let target = match gpu_fanctl::service::installed_path() {
+                Some(_) => format!(
+                    "Updating reinstalls the service and the app in {} with the new version. It asks for administrator approval.",
+                    gpu_fanctl::service::install_dir().display()
+                ),
+                None => "Updating replaces the programs next to this app.".to_string(),
+            };
+            ui.label(RichText::new(format!("{target} The app restarts afterwards.")).weak());
+            if !release.has_package() {
+                ui.label(RichText::new("This release has no package for this system yet; try again in a few minutes.").color(p.warn));
+            }
+            if primary_button(ui, &format!("Update to {}", release.version), release.has_package() && !installing).clicked() {
+                self.updater.install(release, ui.ctx());
+            }
+        }
+
+        match install {
+            Some(Install::Downloading(share)) => {
+                ui.add(egui::ProgressBar::new(share).text(format!("Downloading… {:.0} %", share * 100.0)));
+            }
+            Some(Install::Failed(e)) => {
+                ui.label(RichText::new(format!("Update failed: {e}")).color(p.danger));
+            }
+            Some(state) => {
+                let text = match state {
+                    Install::Verifying => "Checking the download…",
+                    Install::Unpacking => "Unpacking…",
+                    Install::Installing => "Installing: confirm the administrator prompt…",
+                    _ => "Starting the new version…",
+                };
+                ui.horizontal(|ui| {
+                    ui.spinner();
+                    ui.label(text);
+                });
+            }
+            None => {}
+        }
+
+        if secondary_button(ui, "Check now", !self.updater.is_checking() && !installing).clicked() {
+            self.updater.check(ui.ctx());
+        }
+    }
+
     fn settings_page(&mut self, ui: &mut egui::Ui) {
+        card(ui, |ui| self.updates_card(ui));
+
         card(ui, |ui| {
             card_title(ui, "Appearance", "Follow the system setting or pick a theme");
             let mut choice = self.theme;

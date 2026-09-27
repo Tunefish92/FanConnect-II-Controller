@@ -17,6 +17,8 @@ image = { version = "0.25", default-features = false, features = ["png"], option
 nvml-wrapper = "0.13.0"
 serde = { version = "1.0.229", features = ["derive"] }
 serde_json = "1.0.151"
+sha2 = { version = "0.11.0", optional = true }
+ureq = { version = "3.4.2", optional = true }
 
 [target.'cfg(target_os = "linux")'.dependencies]
 libc = "0.2.189"
@@ -28,7 +30,7 @@ windows-sys = { version = "0.61.2", features = ["Win32_Foundation", "Win32_Syste
 
 [features]
 default = ["gui"]
-gui = ["dep:eframe", "dep:egui_plot", "dep:image"]
+gui = ["dep:eframe", "dep:egui_plot", "dep:image", "dep:sha2", "dep:ureq"]
 
 [[bin]]
 name = "gpu-fanctl"

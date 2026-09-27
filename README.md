@@ -46,6 +46,8 @@ service does the controlling. The desktop app shows live data and edits the sett
 - **Hardware detection:** every NVIDIA card is read at startup (name, PCI IDs, VBIOS, memory,
   driver) and marked as supported or not.
 - **Warnings** when GPU Tweak III is also controlling the fans, or a fan reports 0 RPM.
+- **Updates from the app:** it checks GitHub for a new release at startup and updates itself (and
+  the service) with one click, after verifying the download's checksum.
 - **Light, dark and system themes.**
 - **Command-line tool** `gpu-fanctl` for everything, including scripting.
 
@@ -125,7 +127,13 @@ To build only the command-line tool, without the app: `cargo build --release --n
 
 ### Updating and removing
 
-- **Update:** download or build the new version, start its app and click **Reinstall**. The
+- **Update from the app** (0.2.0 and later): the app checks the
+  [GitHub releases](https://github.com/Tunefish92/FanConnect-II-Controller/releases) at startup.
+  When a newer version exists, the Overview and the sidebar say so. **Settings → Update to …**
+  downloads the package for your system, checks it against the release's `.sha256` file, reinstalls
+  the service and the app with the new version (one administrator prompt) and restarts the app.
+  Without an installed service it replaces the programs next to the app instead.
+- **Update by hand:** download or build the new version, start its app and click **Reinstall**. The
   installed copy is replaced. Always reinstall after updating: an older service doesn't know newer
   settings (for example, 0.1.0 treats a calibrated settings file as invalid and uses the Auto curve).
 - **Remove:** click **Uninstall**. The service stops (the fans go to 100 % and stay there until
@@ -143,7 +151,7 @@ The same from a terminal: `gpu-fanctl install`, `gpu-fanctl reinstall`, `gpu-fan
 | **Fan curve** | Auto or Custom, max GPU temp, the curve chart with draggable points, the points table, Apply / Revert, fan calibration |
 | **GPU** | All NVIDIA cards with name, PCI IDs, VBIOS, memory and driver; where the fan controller was found |
 | **Service** | Install, Reinstall and Uninstall the background service |
-| **Settings** | Theme (System / Light / Dark) and the locations of the settings and log files |
+| **Settings** | Updates (check, release notes, one-click update), theme (System / Light / Dark) and the locations of the settings and log files |
 | **About** | Version, build and technology information, changelog, credits |
 
 The sidebar always shows whether the service is running, plus the current GPU temperature and

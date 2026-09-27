@@ -10,6 +10,7 @@ mod gpu;
 mod live;
 mod screenshots;
 mod theme;
+mod update;
 mod widgets;
 
 use std::sync::Arc;
