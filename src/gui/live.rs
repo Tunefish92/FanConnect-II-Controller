@@ -50,6 +50,10 @@ pub struct Sample {
     pub fan2_rpm: u32,
     pub mode: u8,
     pub warning: Option<String>,
+    /// While the daemon calibrates the fans: the share done, 0 to 1.
+    pub calibrating: Option<f32>,
+    /// How the daemon's last calibration ended.
+    pub calibration_result: Option<Result<String, String>>,
 }
 
 #[derive(Clone, Debug)]
@@ -136,6 +140,8 @@ impl Direct {
             fan2_rpm: s.fan2_rpm,
             mode: s.mode,
             warning: None,
+            calibrating: None,
+            calibration_result: None,
         })
     }
 }
@@ -166,6 +172,8 @@ fn collector(live: &Mutex<Live>, ctx: &egui::Context) {
                     fan2_rpm: s.fan2_rpm,
                     mode: s.mode,
                     warning: s.warning,
+                    calibrating: s.calibrating,
+                    calibration_result: s.calibration_result,
                 };
                 (Some(sample), Some(Source::Daemon), None)
             }

@@ -1,6 +1,6 @@
 [package]
 name = "gpu-fanctl"
-version = "0.1.0"
+version = "0.2.0"
 edition = "2024"
 description = "FanConnect II Controller: temperature-controlled case fans on the FanConnect II headers of the ASUS ROG Strix RTX 2080 Ti"
 authors = ["Tunefish"]

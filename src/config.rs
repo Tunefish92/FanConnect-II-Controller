@@ -5,12 +5,15 @@
 //! max_temp = 80                          # fans go to 100 % at this GPU temperature
 //! curve = 40:30, 55:40, 65:60, 80:100    # a custom curve, or `auto` (the default)
 //! custom_curve = 40:30, 55:40, 80:100    # with `curve = auto`: the custom curve, remembered
+//! calibration = 30:750, 40:960, 100:2160 # measured duty:RPM; curve percentages are then fan speed
+//! calibrate = yes                        # asks the daemon to calibrate; it removes the line
 //! ```
 
 use std::ops::RangeInclusive;
 use std::path::{Path, PathBuf};
 use std::{fs, io};
 
+use crate::calibration::Calibration;
 use crate::curve::{CUSTOM_POINTS, CUSTOM_TEMPS, Curve, FLOOR_DUTY};
 
 pub const DEFAULT_MAX_TEMP: u32 = 80;
@@ -24,11 +27,16 @@ pub struct Config {
     /// While `curve` is Auto: the user's custom curve, kept so switching back restores it.
     /// Always `None` while a custom curve is in use (it is then `curve` itself).
     pub remembered_custom: Option<Vec<(f32, f32)>>,
+    /// The fans' measured RPM per duty. With it, curve percentages are fan speed (percent of the
+    /// highest RPM) instead of duty.
+    pub calibration: Option<Calibration>,
+    /// A calibration was asked for and the daemon hasn't started it yet.
+    pub calibrate: bool,
 }
 
 impl Default for Config {
     fn default() -> Self {
-        Self { max_temp: DEFAULT_MAX_TEMP, curve: Curve::Auto, remembered_custom: None }
+        Self { max_temp: DEFAULT_MAX_TEMP, curve: Curve::Auto, remembered_custom: None, calibration: None, calibrate: false }
     }
 }
 
@@ -58,6 +66,11 @@ impl Config {
     pub fn set_custom(&mut self, curve: Curve) {
         self.curve = curve;
         self.remembered_custom = None;
+    }
+
+    /// The duty that gives `percent` on the curve: fan speed when calibrated, else duty itself.
+    pub fn duty_for(&self, percent: f32) -> f32 {
+        self.calibration.as_ref().map_or(percent, |c| c.duty_for(percent))
     }
 }
 
@@ -95,6 +108,14 @@ pub fn parse(text: &str) -> Result<Config, String> {
                 Curve::Custom(points) => config.remembered_custom = Some(points),
                 Curve::Auto => return Err(format!("line {}: custom_curve needs points, not `auto`", number + 1)),
             },
+            "calibration" => config.calibration = Some(parse_calibration(value)?),
+            "calibrate" => {
+                config.calibrate = match value {
+                    "yes" => true,
+                    "no" => false,
+                    _ => return Err(format!("line {}: calibrate must be `yes` or `no`", number + 1)),
+                }
+            }
             other => return Err(format!("line {}: unknown key `{other}`", number + 1)),
         }
     }
@@ -124,22 +145,31 @@ pub fn parse_curve(value: &str) -> Result<Curve, String> {
     if value.trim().eq_ignore_ascii_case("auto") {
         return Ok(Curve::Auto);
     }
-    let points = value
+    Curve::custom(parse_points(value, "temperature:duty")?).map_err(|e| format!("curve: {e}"))
+}
+
+/// Parses a calibration: `duty:rpm` points, e.g. `30:750, 60:1410, 100:2160`.
+pub fn parse_calibration(value: &str) -> Result<Calibration, String> {
+    Calibration::new(parse_points(value, "duty:rpm")?).map_err(|e| format!("calibration: {e}"))
+}
+
+/// Parses `a:b` points of whole numbers separated by commas and/or spaces. Units are allowed.
+fn parse_points(value: &str, form: &str) -> Result<Vec<(f32, f32)>, String> {
+    value
         .split(|c: char| c == ',' || c.is_whitespace())
         .filter(|p| !p.is_empty())
         .map(|point| {
             let (temp, duty) = point
                 .split_once(':')
-                .ok_or_else(|| format!("curve point `{point}` is not `temperature:duty`"))?;
+                .ok_or_else(|| format!("point `{point}` is not `{form}`"))?;
             let number = |s: &str| {
-                s.trim_end_matches(['%', 'C', '°']).parse::<u32>().map(|n| n as f32).map_err(|_| {
-                    format!("curve point `{point}`: `{s}` is not a whole number")
+                s.trim_end_matches(['%', 'C', '°']).trim_end_matches("RPM").parse::<u32>().map(|n| n as f32).map_err(|_| {
+                    format!("point `{point}`: `{s}` is not a whole number")
                 })
             };
             Ok((number(temp)?, number(duty)?))
         })
-        .collect::<Result<Vec<_>, String>>()?;
-    Curve::custom(points).map_err(|e| format!("curve: {e}"))
+        .collect()
 }
 
 pub fn format_points(points: &[(f32, f32)]) -> String {
@@ -158,6 +188,13 @@ pub fn render(config: &Config) -> String {
     if let (Curve::Auto, Some(points)) = (&config.curve, &config.remembered_custom) {
         curve_lines.push_str(&format!("\ncustom_curve = {}", format_points(points)));
     }
+    let mut calibration_lines = String::new();
+    if let Some(calibration) = &config.calibration {
+        calibration_lines.push_str(&format!("calibration = {}\n", format_points(calibration.points())));
+    }
+    if config.calibrate {
+        calibration_lines.push_str("calibrate = yes\n");
+    }
     format!(
         "# gpu-fanctl settings\n\
          #\n\
@@ -169,7 +206,12 @@ pub fn render(config: &Config) -> String {
          #   or a custom fan curve as temperature:duty points (°C:%), rising left to right:\n\
          #   {}..={} points, temperatures {}..={} °C, duty {}..=100 %.\n\
          # custom_curve: with `curve = auto`, your custom curve is remembered here.\n\
-         {curve_lines}\n",
+         {curve_lines}\n\
+         #\n\
+         # calibration: the fans' measured RPM per duty (duty:RPM), written by `gpu-fanctl calibrate`.\n\
+         #   With it, the curve's percentages are fan speed (percent of the highest RPM), not duty.\n\
+         # calibrate = yes: asks the running service to calibrate; it removes the line when it starts.\n\
+         {calibration_lines}",
         MAX_TEMP_RANGE.start(),
         MAX_TEMP_RANGE.end(),
         DEFAULT_MAX_TEMP,
@@ -196,6 +238,19 @@ pub fn load(path: &Path) -> (Config, Option<String>) {
     }
 }
 
+/// Loads the file, changes it and saves it. Refuses to touch a file that doesn't parse, so hand
+/// edits aren't lost. A missing file starts from the defaults.
+pub fn modify(path: &Path, change: impl FnOnce(&mut Config) -> Result<(), String>) -> Result<Config, String> {
+    let mut config = match fs::read_to_string(path) {
+        Ok(text) => parse(&text).map_err(|e| format!("{} is invalid; fix or delete it first: {e}", path.display()))?,
+        Err(e) if e.kind() == io::ErrorKind::NotFound => Config::default(),
+        Err(e) => return Err(format!("reading {}: {e}", path.display())),
+    };
+    change(&mut config)?;
+    save(path, &config).map_err(|e| format!("writing {}: {e}", path.display()))?;
+    Ok(config)
+}
+
 pub fn save(path: &Path, config: &Config) -> io::Result<()> {
     if let Some(dir) = path.parent() {
         fs::create_dir_all(dir)?;
@@ -209,6 +264,30 @@ mod tests {
 
     fn points() -> Vec<(f32, f32)> {
         vec![(40.0, 30.0), (60.0, 50.0), (80.0, 100.0)]
+    }
+
+    fn calibration() -> Calibration {
+        Calibration::new(vec![(30.0, 750.0), (60.0, 1410.0), (100.0, 2160.0)]).unwrap()
+    }
+
+    #[test]
+    fn parses_calibration_and_request() {
+        let config = parse("calibration = 30:750, 60:1410RPM, 100:2160\ncalibrate = yes").unwrap();
+        assert_eq!(config.calibration, Some(calibration()));
+        assert!(config.calibrate);
+        assert!(parse("calibrate = maybe").is_err());
+        assert!(parse("calibration = 30:750").is_err(), "one point");
+        assert!(parse("calibration = 30:750, 60:700, 100:2160").is_err(), "RPM falling");
+    }
+
+    #[test]
+    fn duty_follows_calibration() {
+        let mut config = Config::default();
+        assert_eq!(config.duty_for(50.0), 50.0);
+        config.calibration = Some(calibration());
+        assert_eq!(config.duty_for(100.0), 100.0);
+        assert_eq!(config.duty_for(20.0), FLOOR_DUTY);
+        assert!(config.duty_for(50.0) < 50.0, "these fans turn faster than their duty");
     }
 
     #[test]
@@ -241,7 +320,7 @@ mod tests {
         }
         assert_eq!(parse_curve("Auto"), Ok(Curve::Auto));
         let config = parse("max_temp = 85\ncurve = 40:30, 60:50, 80:100\n").unwrap();
-        assert_eq!(config, Config { max_temp: 85, curve: expected, remembered_custom: None });
+        assert_eq!(config, Config { max_temp: 85, curve: expected, ..Config::default() });
     }
 
     #[test]
@@ -258,9 +337,11 @@ mod tests {
     #[test]
     fn render_round_trips() {
         for config in [
-            Config { max_temp: 60, curve: Curve::Auto, remembered_custom: None },
-            Config { max_temp: 90, curve: Curve::Custom(points()), remembered_custom: None },
-            Config { max_temp: 75, curve: Curve::Auto, remembered_custom: Some(points()) },
+            Config { max_temp: 60, ..Config::default() },
+            Config { max_temp: 90, curve: Curve::Custom(points()), ..Config::default() },
+            Config { max_temp: 75, remembered_custom: Some(points()), ..Config::default() },
+            Config { calibration: Some(calibration()), calibrate: true, ..Config::default() },
+            Config { curve: Curve::Custom(points()), calibration: Some(calibration()), ..Config::default() },
             Config::default(),
         ] {
             assert_eq!(parse(&render(&config)), Ok(config));

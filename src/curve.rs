@@ -34,7 +34,7 @@ const AUTO_POINTS: [(f32, f32); 7] = [
 ];
 
 /// Linear interpolation over (x, duty) points, clamped to the first and last duty.
-fn interpolate(points: &[(f32, f32)], x: f32) -> f32 {
+pub(crate) fn interpolate(points: &[(f32, f32)], x: f32) -> f32 {
     if x <= points[0].0 {
         return points[0].1;
     }

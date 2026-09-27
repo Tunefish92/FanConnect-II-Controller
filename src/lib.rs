@@ -2,6 +2,7 @@
 //! on Linux (i2c-dev) and Windows (NVAPI).
 //! See HARDWARE.md for the protocol and DESIGN.md for the control behaviour.
 
+pub mod calibration;
 pub mod config;
 pub mod curve;
 pub mod daemon;

@@ -79,6 +79,30 @@ only once the card is already throttling.
 **Floor: 30 %.** The fans never go below 30 % and are never stopped. 30 % is the lowest duty
 seen running reliably (750 RPM); lower duties weren't tested.
 
+### Fan calibration
+
+Duty is not fan speed: the tested fans turn at 750 of 2160 RPM (35 %) at 30 % duty and 1410 RPM
+(65 %) at 60 %. Calibration measures the fans so curve percentages can mean fan speed.
+
+- **Sweep:** 100 % first (the highest RPM), then 90 % down to 30 % in 10 % steps, so the fans only
+  slow down after the first step. At each step the RPM counts once it has been within 30 RPM (one
+  tach unit) for 2 readings in a row, after at least 5 readings (one a second), or after 15
+  readings at the latest. About a minute in total.
+- **Fans:** the fans that report an RPM at 100 % are measured, and their RPM averaged. None →
+  calibration fails ("are fans connected?"). A reading above the previous step's is capped to it,
+  so the table never falls.
+- **Result:** stored as `calibration = duty:rpm, …` (30 % to 100 %) in the settings file.
+- **Use:** with a calibration, curve points, the Controller's smoothing and the ramp all work in
+  fan speed percent. Before each write the speed becomes a duty by inverse interpolation of the
+  table. Speeds below the one at 30 % duty give 30 % duty: the floor is still a duty.
+- **Who runs it:** the daemon, since it owns the duty. The app and `gpu-fanctl calibrate` write
+  `calibrate = yes` into the settings file (the one file users can write). The daemon removes the
+  line, sweeps, writes the result, and publishes progress and the outcome in `status.json`. Without
+  a running daemon, `gpu-fanctl calibrate` sweeps itself and leaves the fans at the fail-safe duty.
+- **Safety:** the sweep stops (keeping the old calibration) if the GPU reaches max temp or its
+  temperature can't be read; the normal curve then takes over. Stopping the daemon mid-sweep
+  leaves the fans at the fail-safe duty as usual and doesn't restart the sweep.
+
 ### Behaviour
 
 Rise fast, fall slowly, so the fans don't pump up and down with short load changes (loading

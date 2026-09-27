@@ -4,6 +4,22 @@ All notable changes to FanConnect II Controller are listed here.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and the project uses
 [Semantic Versioning](https://semver.org/).
 
+## [0.2.0] - 2026-09-27
+
+### Added
+
+- Fan calibration on the Fan curve page and as `gpu-fanctl calibrate`: runs the fans at 100 % to
+  find their highest RPM, then measures the RPM from 90 % down to 30 % duty. Afterwards the
+  curve's percentages are fan speed (percent of the highest RPM) instead of PWM duty, and the
+  Overview shows fan speed and each fan's percentage of its top speed. `gpu-fanctl calibrate clear`
+  goes back to duty.
+- A banner at the top of the Fan curve page shows whether the fans are calibrated, and the
+  progress while a calibration runs.
+
+### Changed
+
+- The README links the prebuilt release packages.
+
 ## [0.1.0] - 2026-09-25
 
 First release.

@@ -2,13 +2,17 @@
 
 use std::sync::Arc;
 use std::sync::atomic::{AtomicBool, Ordering};
+use std::thread::sleep;
+use std::time::{Duration, Instant};
 
 use anyhow::{Context, Result, bail};
+use gpu_fanctl::calibration::{self, Sweep};
 use gpu_fanctl::config::{self, Config};
-use gpu_fanctl::curve::{self, Curve, FLOOR_DUTY};
+use gpu_fanctl::curve::{self, Curve, FAILSAFE_DUTY, FLOOR_DUTY};
 use gpu_fanctl::daemon;
 use gpu_fanctl::fanconnect::{FanConnect, MODE_AUTO, MODE_HOST};
 use gpu_fanctl::gpu::Gpu;
+use gpu_fanctl::status;
 
 #[cfg(target_os = "linux")]
 const ADMIN: &str = "Hardware commands, install/uninstall/reinstall and (before installing) changing settings need root.";
@@ -39,6 +43,10 @@ fn usage() -> String {
   curve auto           go back to the built-in Auto curve (your custom curve is remembered)
   curve custom         switch back to your remembered custom curve
   max-temp [<°C>]      show or set the max GPU temp (60-90, default 80): fans always run 100 % from there
+  calibrate            measure the fans' RPM from 100 % down to 30 % duty (about a minute); afterwards
+                       the curve's percentages are fan speed, percent of the highest RPM. Uses the
+                       running service if there is one
+  calibrate clear      forget the calibration: curve percentages are duty again
   set <percent>        set a fixed duty, 30-100 (a running daemon overrides it within a second)
   run                  run the control loop in this console; on exit the fans go to 100 %{PLATFORM_COMMANDS}
 
@@ -70,6 +78,11 @@ fn main() {
         ["curve", "set", points @ ..] if !points.is_empty() => set_curve(&points.join(" ")),
         ["max-temp"] => show_max_temp(),
         ["max-temp", value] => set_max_temp(value),
+        ["calibrate"] => calibrate(),
+        ["calibrate", "clear"] => update_config(|c| {
+            c.calibration = None;
+            Ok(())
+        }),
         ["set", percent] => set(percent),
         ["run"] => run(),
         ["install"] => gpu_fanctl::service::install(),
@@ -103,16 +116,7 @@ fn load_config() -> Config {
 
 /// Changes the settings file. Refuses to touch a file that doesn't parse, so hand edits aren't lost.
 fn update_config(change: impl FnOnce(&mut Config) -> Result<(), String>) -> Result<()> {
-    let path = config::path();
-    let mut config = match std::fs::read_to_string(&path) {
-        Ok(text) => config::parse(&text)
-            .map_err(anyhow::Error::msg)
-            .with_context(|| format!("{} is invalid; fix or delete it first", path.display()))?,
-        Err(e) if e.kind() == std::io::ErrorKind::NotFound => Config::default(),
-        Err(e) => return Err(e).with_context(|| format!("reading {}", path.display())),
-    };
-    change(&mut config).map_err(anyhow::Error::msg)?;
-    config::save(&path, &config).with_context(|| format!("writing {} (needs administrator/root)", path.display()))?;
+    let config = config::modify(&config::path(), change).map_err(anyhow::Error::msg).context("changing the settings (needs administrator/root)")?;
     println!("Saved. A running daemon picks it up within a second.\n");
     print_config(&config);
     Ok(())
@@ -167,12 +171,20 @@ fn detect() -> Result<()> {
 fn status() -> Result<()> {
     let fc = FanConnect::open()?;
     let s = fc.status()?;
-    let config = load_config();
     println!("Controller:   {}", fc.describe());
     println!("Mode:         {} (0x{:02X})", mode_name(s.mode), s.mode);
     println!("Duty:         {:.0} % (0x{:02X})", s.duty_percent(), s.duty_reg);
-    println!("Fan 1:        {} RPM", s.fan1_rpm);
-    println!("Fan 2:        {} RPM", s.fan2_rpm);
+    let config = load_config();
+    let rpm = |rpm: u32| match &config.calibration {
+        Some(c) => format!("{rpm} RPM ({:.0} % of {:.0})", rpm as f32 * 100.0 / c.max_rpm(), c.max_rpm()),
+        None => format!("{rpm} RPM"),
+    };
+    println!("Fan 1:        {}", rpm(s.fan1_rpm));
+    println!("Fan 2:        {}", rpm(s.fan2_rpm));
+    match &config.calibration {
+        Some(c) => println!("Fan speed:    {:.0} % (calibrated: {})", c.speed_at(s.duty_percent()), daemon::summarize(c)),
+        None => println!("Fan speed:    not calibrated, curve percentages are duty (`gpu-fanctl calibrate`)"),
+    }
     println!("Curve:        {}", curve_name(&config.curve));
     println!("Max temp:     {} °C", config.max_temp);
     match Gpu::open(Some(fc.pci_bus())).and_then(|g| g.temperature()) {
@@ -180,7 +192,11 @@ fn status() -> Result<()> {
             let target =
                 if t >= config.max_temp { 100.0 } else { config.curve.duty(t as f32, config.max_temp) };
             println!("GPU temp:     {t} °C");
-            println!("Target duty:  {target:.0} %");
+            if config.calibration.is_some() {
+                println!("Target speed: {target:.0} % (duty {:.0} %)", config.duty_for(target));
+            } else {
+                println!("Target duty:  {target:.0} %");
+            }
         }
         Err(e) => println!("GPU temp:     unavailable ({e:#})"),
     }
@@ -190,14 +206,20 @@ fn status() -> Result<()> {
 
 fn print_config(config: &Config) {
     println!("Curve: {}, max temp {} °C", curve_name(&config.curve), config.max_temp);
+    match &config.calibration {
+        Some(c) => println!("Percentages are fan speed. Calibrated: {}", daemon::summarize(c)),
+        None => println!("Percentages are duty. Not calibrated (`gpu-fanctl calibrate`)"),
+    }
     let points = config.curve.points(config.max_temp);
-    for (i, (temp, duty)) in points.iter().enumerate() {
+    for (i, (temp, percent)) in points.iter().enumerate() {
         let prefix = match i {
             0 => "<=",
             _ if i == points.len() - 1 => ">=",
             _ => "  ",
         };
-        println!("  {prefix} {temp:5.1} °C  {duty:5.1} %  (0x{:02X})", curve::duty_to_reg(*duty));
+        let duty = config.duty_for(*percent);
+        let detail = if config.calibration.is_some() { format!("duty {duty:.0} %, ") } else { String::new() };
+        println!("  {prefix} {temp:5.1} °C  {percent:5.1} %  ({detail}0x{:02X})", curve::duty_to_reg(duty));
     }
     let last_temp = points.last().map_or(0.0, |p| p.0);
     if last_temp > config.max_temp as f32 {
@@ -251,6 +273,110 @@ fn set(percent: &str) -> Result<()> {
     println!("Duty set to {percent} % (0x{:02X}).", curve::duty_to_reg(percent));
     warn_other_controller();
     Ok(())
+}
+
+/// Calibrates through the running daemon, or directly when none runs.
+fn calibrate() -> Result<()> {
+    if status::read().is_some_and(|s| s.is_fresh()) {
+        calibrate_with_daemon()
+    } else {
+        calibrate_directly()
+    }
+}
+
+/// Asks the running daemon to calibrate and follows its progress.
+fn calibrate_with_daemon() -> Result<()> {
+    config::modify(&config::path(), |c| {
+        c.calibrate = true;
+        Ok(())
+    })
+    .map_err(anyhow::Error::msg)
+    .context("changing the settings (needs administrator/root)")?;
+    println!("Asked the running service to calibrate the fans (about a minute).");
+    let asked = Instant::now();
+    let mut started = false;
+    let mut shown = -1.0;
+    loop {
+        sleep(Duration::from_secs(1));
+        let Some(s) = status::read().filter(status::DaemonStatus::is_fresh) else {
+            bail!("the service stopped");
+        };
+        match (s.calibrating, started) {
+            (Some(progress), _) => {
+                started = true;
+                if progress != shown {
+                    shown = progress;
+                    println!("  {:3.0} % done", progress * 100.0);
+                }
+            }
+            (None, true) => {
+                return match s.calibration_result {
+                    Some(Ok(summary)) => {
+                        println!("Calibrated: {summary}.\nThe curve's percentages are now fan speed.");
+                        Ok(())
+                    }
+                    Some(Err(e)) => bail!("calibration failed: {e}"),
+                    None => bail!("calibration ended without a result"),
+                };
+            }
+            (None, false) if asked.elapsed() > Duration::from_secs(10) => {
+                bail!("the service did not start the calibration; is it an older version?");
+            }
+            (None, false) => {}
+        }
+    }
+}
+
+/// Runs the calibration sweep here, when no daemon controls the fans. Leaves the fans at the
+/// fail-safe duty afterwards.
+fn calibrate_directly() -> Result<()> {
+    let config = load_config();
+    let fc = FanConnect::open()?;
+    let gpu = Gpu::open(Some(fc.pci_bus())).context("the GPU temperature is needed to calibrate safely")?;
+    warn_other_controller();
+    let stop = Arc::new(AtomicBool::new(false));
+    let flag = Arc::clone(&stop);
+    ctrlc::set_handler(move || flag.store(true, Ordering::Relaxed)).context("installing Ctrl+C handler")?;
+
+    println!(
+        "Calibrating: {} % down to {} % duty, measuring the RPM at each step (about a minute).",
+        calibration::STEPS[0],
+        calibration::STEPS[calibration::STEPS.len() - 1]
+    );
+    let mut sweep = Sweep::new();
+    let result = (|| {
+        fc.take_control()?;
+        loop {
+            if stop.load(Ordering::Relaxed) {
+                bail!("stopped");
+            }
+            let temp = gpu.temperature()?;
+            if temp >= config.max_temp {
+                bail!("stopped: GPU reached max temp ({temp} °C)");
+            }
+            fc.set_duty(sweep.duty())?;
+            sleep(Duration::from_secs(1));
+            let s = fc.status()?;
+            let before = sweep.last_measured();
+            let result = sweep.observe(s.fan1_rpm, s.fan2_rpm);
+            if let Some((duty, rpm)) = sweep.last_measured().filter(|&m| Some(m) != before) {
+                println!("  {duty:3.0} % duty: {rpm:.0} RPM");
+            }
+            if let Some(result) = result {
+                return result.map_err(anyhow::Error::msg);
+            }
+        }
+    })();
+    if let Err(e) = fc.take_control().and_then(|()| fc.set_duty(FAILSAFE_DUTY)) {
+        eprintln!("warning: could not set the fail-safe duty: {e:#}");
+    }
+    let calibration = result?;
+    println!("Calibrated: {}.", daemon::summarize(&calibration));
+    println!("Fans left at {FAILSAFE_DUTY} % duty: nothing controls them until the service runs.");
+    update_config(|c| {
+        c.calibration = Some(calibration);
+        Ok(())
+    })
 }
 
 fn run() -> Result<()> {

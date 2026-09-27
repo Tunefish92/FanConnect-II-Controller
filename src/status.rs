@@ -33,6 +33,12 @@ pub struct DaemonStatus {
     /// Where the fan controller was found, e.g. "NVAPI I2C port 1, GPU bus 0a".
     #[serde(default)]
     pub controller: String,
+    /// While a fan calibration runs: the share done, 0 to 1.
+    #[serde(default)]
+    pub calibrating: Option<f32>,
+    /// How the last calibration since the daemon started ended: a summary, or why it failed.
+    #[serde(default)]
+    pub calibration_result: Option<Result<String, String>>,
 }
 
 pub fn now_ms() -> u64 {
@@ -91,6 +97,8 @@ mod tests {
             curve: "auto".into(),
             warning: None,
             controller: "i2c-4, GPU 0000:0a:00.0".into(),
+            calibrating: Some(0.25),
+            calibration_result: Some(Err("stopped".into())),
         };
         assert!(s.is_fresh());
         s.updated_ms -= 10_000;

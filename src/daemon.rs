@@ -7,8 +7,9 @@ use std::time::{Duration, Instant, SystemTime};
 
 use anyhow::{Result, bail};
 
+use crate::calibration::{self, Calibration, Sweep};
 use crate::config::{self, Config};
-use crate::curve::{self, Controller, Curve, FAILSAFE_DUTY};
+use crate::curve::{self, Controller, Curve, FAILSAFE_DUTY, FLOOR_DUTY};
 use crate::fanconnect::{FanConnect, MODE_HOST};
 use crate::gpu::Gpu;
 use crate::log;
@@ -57,9 +58,46 @@ fn load_config() -> Config {
 }
 
 fn describe(config: &Config) -> String {
-    match config.curve {
+    let curve = match config.curve {
         Curve::Auto => format!("Auto curve, max temp {} °C", config.max_temp),
         Curve::Custom(_) => format!("custom curve {}, max temp {} °C", config::format_curve(&config.curve), config.max_temp),
+    };
+    match &config.calibration {
+        Some(c) => format!("{curve}, fan speed calibrated to {:.0} RPM", c.max_rpm()),
+        None => format!("{curve}, uncalibrated (curve percentages are duty)"),
+    }
+}
+
+/// One line about a calibration, e.g. "highest 2160 RPM, lowest 35 % (750 RPM at 30 % duty)".
+pub fn summarize(calibration: &Calibration) -> String {
+    format!(
+        "highest {:.0} RPM, lowest {:.0} % ({:.0} RPM at {FLOOR_DUTY} % duty)",
+        calibration.max_rpm(),
+        calibration.floor_speed(),
+        calibration.rpm_at(FLOOR_DUTY)
+    )
+}
+
+/// Ends a calibration run: saves a successful one to the settings file and logs the outcome.
+/// Returns the outcome for the status, and the settings as saved.
+fn finish_calibration(result: Result<Calibration, String>) -> (Result<String, String>, Option<Config>) {
+    let saved = result.and_then(|calibration| {
+        let summary = summarize(&calibration);
+        config::modify(&config::path(), |c| {
+            c.calibration = Some(calibration);
+            Ok(())
+        })
+        .map(|config| (summary, config))
+    });
+    match saved {
+        Ok((summary, config)) => {
+            log!("calibration done: {summary}");
+            (Ok(summary), Some(config))
+        }
+        Err(e) => {
+            log!("calibration failed: {e}");
+            (Err(e), None)
+        }
     }
 }
 
@@ -136,6 +174,8 @@ fn control_loop(fc: &FanConnect, stop: &AtomicBool) -> Result<()> {
     let mut writer = Writer { last_written: None, other_writer_logged: None, other_writer_seen: None };
     let mut last = Instant::now();
     let mut status_ok = true;
+    let mut sweep: Option<Sweep> = None;
+    let mut calibration_result: Option<Result<String, String>> = None;
 
     fc.take_control()?;
 
@@ -153,6 +193,27 @@ fn control_loop(fc: &FanConnect, stop: &AtomicBool) -> Result<()> {
                 controller.configure(config.max_temp, config.curve.clone());
                 log!("settings changed: {}", describe(&config));
             }
+        }
+        if config.calibrate && sweep.is_none() {
+            // Take the request out of the file first, so a restart doesn't calibrate again.
+            match config::modify(&config::path(), |c| {
+                c.calibrate = false;
+                Ok(())
+            }) {
+                Ok(saved) => {
+                    config = saved;
+                    config_stamp = modified();
+                }
+                Err(e) => log!("could not remove the calibration request: {e}"),
+            }
+            config.calibrate = false;
+            sweep = Some(Sweep::new());
+            calibration_result = None;
+            log!(
+                "calibrating the fans: {} % down to {} % duty, measuring the RPM at each step",
+                calibration::STEPS[0],
+                calibration::STEPS[calibration::STEPS.len() - 1]
+            );
         }
 
         if gpu.is_none() && gpu_attempt.elapsed() >= GPU_RETRY {
@@ -176,7 +237,18 @@ fn control_loop(fc: &FanConnect, stop: &AtomicBool) -> Result<()> {
         }
         temp_ok = temp.is_some();
 
-        let duty = controller.update(temp, dt);
+        // Curve percent: fan speed when calibrated, duty otherwise.
+        let percent = controller.update(temp, dt);
+        let mut duty = config.duty_for(percent);
+        if let Some(s) = &sweep {
+            if temp.is_some_and(|t| t < config.max_temp as f32) {
+                duty = s.duty();
+            } else {
+                sweep = None;
+                let reason = if temp.is_some() { "GPU reached max temp" } else { "GPU temperature unreadable" };
+                calibration_result = Some(finish_calibration(Err(format!("stopped: {reason}"))).0);
+            }
+        }
         match writer.apply(fc, duty) {
             Ok(()) => failures = 0,
             Err(e) => {
@@ -189,6 +261,18 @@ fn control_loop(fc: &FanConnect, stop: &AtomicBool) -> Result<()> {
         }
 
         let hw = fc.status().ok();
+        if let (Some(s), Some(hw)) = (&mut sweep, hw)
+            && let Some(result) = s.observe(hw.fan1_rpm, hw.fan2_rpm)
+        {
+            sweep = None;
+            let (outcome, saved) = finish_calibration(result);
+            if let Some(saved) = saved {
+                config = saved;
+                config_stamp = modified();
+                controller.configure(config.max_temp, config.curve.clone());
+            }
+            calibration_result = Some(outcome);
+        }
         if let Some(hw) = hw {
             let warning = if temp.is_none() {
                 Some(format!("GPU temperature unreadable, fans at the fail-safe {FAILSAFE_DUTY} %"))
@@ -207,6 +291,8 @@ fn control_loop(fc: &FanConnect, stop: &AtomicBool) -> Result<()> {
                 curve: config::format_curve(&config.curve),
                 warning,
                 controller: fc.describe(),
+                calibrating: sweep.as_ref().map(Sweep::progress),
+                calibration_result: calibration_result.clone(),
             });
             if let Err(e) = &published
                 && status_ok

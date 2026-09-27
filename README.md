@@ -32,6 +32,8 @@ service does the controlling. The desktop app shows live data and edits the sett
 
 - **Fans follow the GPU temperature**, with a built-in Auto curve or your own custom curve
   (2–16 points, drag them in a chart or type them into a table).
+- **Fan calibration:** one click measures your fans' highest RPM (and the RPM at every duty step),
+  so the curve's percentages mean real fan speed: 50 % is half the fans' top speed.
 - **Smooth and quiet:** rises immediately, ignores dips of up to 3 °C, and ramps down slowly
   (2 % per second), so loading screens don't make the fans pump.
 - **Safety first:** at or above the max GPU temp (default 80 °C) the fans always run at 100 %.
@@ -74,7 +76,10 @@ Radeon RX 5000/6000). They may work the same way, but each needs to be verified 
 
 ## Installation
 
-There are no prebuilt downloads yet. Build from source with [Rust](https://rustup.rs) (stable).
+**Download:** prebuilt packages for Windows and Linux are on the
+[Releases page](https://github.com/Tunefish92/FanConnect-II-Controller/releases/latest). Unpack,
+keep both programs in the same folder, start `gpu-fanctl-gui` and continue with **Install service**
+below. Or build from source with [Rust](https://rustup.rs) (stable):
 
 ### Windows
 
@@ -120,8 +125,9 @@ To build only the command-line tool, without the app: `cargo build --release --n
 
 ### Updating and removing
 
-- **Update:** build the new version, start its app and click **Reinstall**. The installed copy is
-  replaced.
+- **Update:** download or build the new version, start its app and click **Reinstall**. The
+  installed copy is replaced. Always reinstall after updating: an older service doesn't know newer
+  settings (for example, 0.1.0 treats a calibrated settings file as invalid and uses the Auto curve).
 - **Remove:** click **Uninstall**. The service stops (the fans go to 100 % and stay there until
   something else controls them), and the service and shortcuts are removed. The programs and your
   settings stay.
@@ -134,7 +140,7 @@ The same from a terminal: `gpu-fanctl install`, `gpu-fanctl reinstall`, `gpu-fan
 | Page | What you find there |
 |---|---|
 | **Overview** | Service status, GPU temperature, fan duty and target, both fans' RPM, 10-minute history |
-| **Fan curve** | Auto or Custom, max GPU temp, the curve chart with draggable points, the points table, Apply / Revert |
+| **Fan curve** | Auto or Custom, max GPU temp, the curve chart with draggable points, the points table, Apply / Revert, fan calibration |
 | **GPU** | All NVIDIA cards with name, PCI IDs, VBIOS, memory and driver; where the fan controller was found |
 | **Service** | Install, Reinstall and Uninstall the background service |
 | **Settings** | Theme (System / Light / Dark) and the locations of the settings and log files |
@@ -158,6 +164,16 @@ falling). When you switch back to Auto, your custom curve is remembered.
 **Max GPU temp** (60–90 °C, default 80 °C): from this temperature the fans always run at 100 %,
 whichever curve is active. The 2080 Ti starts lowering its clocks at about 84 °C.
 
+**Fan calibration:** out of the box, the curve's percentages are PWM duty, and fans don't turn in
+proportion to it: the tested fans run at 750 of 2160 RPM (35 %) at 30 % duty. **Calibrate fans** on
+the Fan curve page (or `gpu-fanctl calibrate`) runs the fans at 100 % to find their highest RPM,
+then steps down to 30 % duty and measures each step, which takes about a minute. From then on the
+curve's percentages are fan speed, in percent of the highest RPM, and the service picks the duty
+that gives it. The fans still never go below 30 % duty, so the lowest speed is whatever the fans do
+there (shown as *Lowest speed*). Calibration stops if the GPU reaches max temp. Run it again after
+changing fans; **Remove calibration** (or `gpu-fanctl calibrate clear`) goes back to duty. A banner
+at the top of the Fan curve page always shows whether the fans are calibrated.
+
 Settings are stored in a small text file that you can also edit by hand. A running service applies
 changes within a second:
 
@@ -165,6 +181,9 @@ changes within a second:
 max_temp = 80
 curve = 40:30, 55:40, 65:60, 75:85, 80:100   # or: curve = auto
 custom_curve = 40:30, 55:40, 80:100          # remembered custom curve while curve = auto
+calibration = 30:750, 40:960, 50:1170, 60:1410, 70:1620, 80:1830, 90:2010, 100:2160
+                                             # measured duty:RPM, written by calibrate
+calibrate = yes                              # asks the service to calibrate (it removes the line)
 ```
 
 | | Windows | Linux |
@@ -185,6 +204,8 @@ gpu-fanctl curve set 40:30 55:40 65:60 75:85 80:100
 gpu-fanctl curve auto          back to the Auto curve (your custom curve is remembered)
 gpu-fanctl curve custom        back to your remembered custom curve
 gpu-fanctl max-temp 80         fans always run at 100 % from this temperature (60-90)
+gpu-fanctl calibrate           measure the fans' RPM (about a minute); curve percentages become fan speed
+gpu-fanctl calibrate clear     forget the calibration; curve percentages are duty again
 gpu-fanctl set 60              fixed duty, 30-100 % (a running service overrides it)
 gpu-fanctl run                 run the control loop in the terminal; Ctrl+C sets 100 % and exits
 gpu-fanctl install             install and start the service, add shortcuts

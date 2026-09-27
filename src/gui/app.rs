@@ -5,7 +5,8 @@ use std::sync::{Arc, Mutex};
 use std::time::{Instant, SystemTime};
 
 use eframe::egui::{self, Margin, RichText};
-use egui_plot::{AxisHints, Legend, Line, LineStyle, MarkerShape, Plot, PlotPoints, PlotTransform, Points, VLine};
+use egui_plot::{AxisHints, HLine, Legend, Line, LineStyle, MarkerShape, Plot, PlotPoints, PlotTransform, Points, VLine};
+use gpu_fanctl::calibration::Calibration;
 use gpu_fanctl::config::{self, Config, MAX_TEMP_RANGE};
 use gpu_fanctl::curve::{self, CUSTOM_POINTS, CUSTOM_TEMPS, Curve, FLOOR_DUTY};
 use gpu_fanctl::fanconnect::{MODE_AUTO, MODE_HOST};
@@ -58,6 +59,7 @@ pub struct App {
     points: Vec<(f32, f32)>,
     dragging: Option<usize>,
     message: Option<(String, bool)>,
+    calibration_message: Option<(String, bool)>,
     service: ServicePanel,
 }
 
@@ -115,6 +117,11 @@ fn ticks(from: i32, to: i32, step: usize) -> Vec<(f64, String)> {
     (from..=to).step_by(step).map(|v| (f64::from(v), v.to_string())).collect()
 }
 
+/// A duty as shown: fan speed when the fans are calibrated, the duty itself otherwise.
+fn shown_percent(calibration: Option<&Calibration>, duty: f32) -> f32 {
+    calibration.map_or(duty, |c| c.speed_at(duty))
+}
+
 fn message_label(ui: &mut egui::Ui, message: &Option<(String, bool)>) {
     if let Some((text, is_error)) = message {
         let p = Palette::current(ui.ctx());
@@ -149,6 +156,7 @@ impl App {
             points: Vec::new(),
             dragging: None,
             message: warning.map(|w| (w, true)),
+            calibration_message: None,
             service: ServicePanel { installed_path: gpu_fanctl::service::installed_path(), ..Default::default() },
         };
         app.load_into_editor(&saved);
@@ -165,13 +173,21 @@ impl App {
     }
 
     /// The settings as currently edited, or why they are invalid. With Auto selected, the custom
-    /// points are kept as the remembered custom curve (if they are valid).
+    /// points are kept as the remembered custom curve (if they are valid). The calibration isn't
+    /// edited here; it is kept as saved.
     fn edited(&self) -> Result<Config, String> {
-        if self.custom {
-            return Ok(Config { max_temp: self.max_temp, curve: Curve::custom(self.points.clone())?, remembered_custom: None });
-        }
-        let remembered_custom = Curve::custom(self.points.clone()).ok().map(|_| self.points.clone());
-        Ok(Config { max_temp: self.max_temp, curve: Curve::Auto, remembered_custom })
+        let (curve, remembered_custom) = if self.custom {
+            (Curve::custom(self.points.clone())?, None)
+        } else {
+            (Curve::Auto, Curve::custom(self.points.clone()).ok().map(|_| self.points.clone()))
+        };
+        Ok(Config {
+            max_temp: self.max_temp,
+            curve,
+            remembered_custom,
+            calibration: self.saved.calibration.clone(),
+            calibrate: self.saved.calibrate,
+        })
     }
 
     /// The points shown in the chart: the custom points, or the Auto curve's points.
@@ -205,6 +221,25 @@ impl App {
         }
         if let Some(w) = warning {
             self.message = Some((w, true));
+        }
+    }
+
+    /// Changes only the calibration settings in the file, leaving unsaved curve edits alone.
+    fn change_calibration(&mut self, change: impl FnOnce(&mut Config)) {
+        match config::modify(&config::path(), |c| {
+            change(c);
+            Ok(())
+        }) {
+            Ok(saved) => {
+                self.saved.calibration = saved.calibration;
+                self.saved.calibrate = saved.calibrate;
+                self.saved_stamp = modified();
+                self.calibration_message = None;
+            }
+            Err(e) => {
+                let hint = "Install the service (it lets users edit the settings) or run this app as administrator/root.";
+                self.calibration_message = Some((format!("Could not save: {e}. {hint}"), true));
+            }
         }
     }
 
@@ -266,12 +301,14 @@ impl eframe::App for App {
                         Page::Overview => {
                             widgets::page_header(ui, "Overview", "Live readings from the card and the fan service");
                             status_banners(ui, &live);
-                            stat_cards(ui, &live);
-                            card(ui, |ui| history_card(ui, &live));
+                            stat_cards(ui, &live, self.saved.calibration.as_ref());
+                            card(ui, |ui| history_card(ui, &live, self.saved.calibration.as_ref()));
                         }
                         Page::Curve => {
                             widgets::page_header(ui, "Fan curve", "How the external fans follow the GPU temperature");
+                            self.calibration_banner(ui, &live, service_running);
                             card(ui, |ui| self.curve_card(ui, &live, service_running));
+                            card(ui, |ui| self.calibration_card(ui, &live, service_running));
                         }
                         Page::Gpu => {
                             widgets::page_header(ui, "GPU", "The graphics card and its FanConnect II controller");
@@ -342,27 +379,35 @@ fn status_banners(ui: &mut egui::Ui, live: &Live) {
     }
 }
 
-fn stat_cards(ui: &mut egui::Ui, live: &Live) {
+fn stat_cards(ui: &mut egui::Ui, live: &Live, calibration: Option<&Calibration>) {
     let p = Palette::current(ui.ctx());
     let s = live.latest.as_ref();
     let temp = s.and_then(|s| s.gpu_temp).map_or("–".into(), |t| format!("{t:.0}"));
-    let duty = s.map_or("–".into(), |s| format!("{:.0}", s.duty));
-    let target = s.and_then(|s| s.target).map_or(String::new(), |t| format!("Target {t:.0} %"));
+    let percent = s.map(|s| shown_percent(calibration, s.duty));
+    let duty = percent.map_or("–".into(), |d| format!("{d:.0}"));
+    let target = s.and_then(|s| s.target).map_or(String::new(), |t| format!("Target {:.0} %", shown_percent(calibration, t)));
+    let fans_caption = if calibration.is_some() { "FAN SPEED" } else { "FAN DUTY" };
     let mode = s.map_or("", |s| match s.mode {
         MODE_HOST => "PC control",
         MODE_AUTO => "Card auto mode",
         _ => "Unknown mode",
     });
-    let fan = |rpm: u32| if rpm == 0 && s.is_some_and(|s| s.duty >= FLOOR_DUTY) { "⚠ Reports 0 RPM" } else { "" };
+    let fan = |rpm: u32| {
+        if rpm == 0 && s.is_some_and(|s| s.duty >= FLOOR_DUTY) {
+            "⚠ Reports 0 RPM".to_string()
+        } else {
+            calibration.filter(|_| s.is_some()).map_or(String::new(), |c| format!("{:.0} % of max", rpm as f32 * 100.0 / c.max_rpm()))
+        }
+    };
     let rpm1 = s.map_or(0, |s| s.fan1_rpm);
     let rpm2 = s.map_or(0, |s| s.fan2_rpm);
     let rpm_text = |rpm: u32| if s.is_some() { rpm.to_string() } else { "–".into() };
 
     let tile = |ui: &mut egui::Ui, index: usize| match index {
         0 => widgets::stat_card(ui, "GPU TEMPERATURE", &temp, "°C", p.temp, mode, None),
-        1 => widgets::stat_card(ui, "FAN DUTY", &duty, "%", p.accent, &target, s.map(|s| s.duty / 100.0)),
-        2 => widgets::stat_card(ui, "FAN 1", &rpm_text(rpm1), "RPM", p.text, fan(rpm1), None),
-        _ => widgets::stat_card(ui, "FAN 2", &rpm_text(rpm2), "RPM", p.text, fan(rpm2), None),
+        1 => widgets::stat_card(ui, fans_caption, &duty, "%", p.accent, &target, percent.map(|d| d / 100.0)),
+        2 => widgets::stat_card(ui, "FAN 1", &rpm_text(rpm1), "RPM", p.text, &fan(rpm1), None),
+        _ => widgets::stat_card(ui, "FAN 2", &rpm_text(rpm2), "RPM", p.text, &fan(rpm2), None),
     };
     let per_row = if ui.available_width() >= WIDE_LAYOUT { 4 } else { 2 };
     for first in (0..4).step_by(per_row) {
@@ -374,9 +419,10 @@ fn stat_cards(ui: &mut egui::Ui, live: &Live) {
     }
 }
 
-fn history_card(ui: &mut egui::Ui, live: &Live) {
+fn history_card(ui: &mut egui::Ui, live: &Live, calibration: Option<&Calibration>) {
     let p = Palette::current(ui.ctx());
-    card_title(ui, "History", "GPU temperature and fan duty over the last 10 minutes");
+    let fans = if calibration.is_some() { "Fan speed %" } else { "Fan duty %" };
+    card_title(ui, "History", "GPU temperature and fan speed over the last 10 minutes");
     let now = live.started.elapsed().as_secs_f64();
     let series = |f: &dyn Fn(&live::Sample) -> Option<f32>| -> PlotPoints<'static> {
         live.history.iter().filter_map(|s| f(s).map(|v| [s.t - now, f64::from(v)])).collect::<Vec<_>>().into()
@@ -395,7 +441,7 @@ fn history_card(ui: &mut egui::Ui, live: &Live) {
         .custom_y_axes(vec![y_axis("°C  /  %")])
         .show(ui, |plot| {
             plot.line(Line::new("GPU °C", series(&|s| s.gpu_temp)).color(p.temp).width(2.0));
-            plot.line(Line::new("Fan duty %", series(&|s| Some(s.duty))).color(p.accent).width(2.0));
+            plot.line(Line::new(fans, series(&|s| Some(shown_percent(calibration, s.duty)))).color(p.accent).width(2.0));
         });
     // Every 2 minutes, labelled "-10:00" … "now".
     let times: Vec<(f64, String)> = (0..=600)
@@ -459,17 +505,23 @@ impl App {
     fn curve_plot(&mut self, ui: &mut egui::Ui, live: &Live) {
         let p = Palette::current(ui.ctx());
         let max_temp = self.max_temp;
+        let calibration = self.saved.calibration.as_ref();
+        // Calibrated fans never run slower than at the floor duty.
+        let floor = calibration.map(Calibration::floor_speed);
         // Drawn even while invalid, so dragging stays responsive.
         let preview = if self.custom { Curve::Custom(self.points.clone()) } else { Curve::Auto };
         let line: Vec<[f64; 2]> = (40..=200)
             .map(|half| {
                 let t = f64::from(half) / 2.0;
-                let duty = if t >= f64::from(max_temp) { 100.0 } else { preview.duty(t as f32, max_temp) };
-                [t, f64::from(duty)]
+                let percent = if t >= f64::from(max_temp) { 100.0 } else { preview.duty(t as f32, max_temp) };
+                [t, f64::from(percent.max(floor.unwrap_or(0.0)))]
             })
             .collect();
         let handles: Vec<[f64; 2]> = self.shown_points().iter().map(|&(t, d)| [f64::from(t), f64::from(d)]).collect();
-        let now = live.latest.as_ref().and_then(|s| s.gpu_temp.map(|t| [f64::from(t), f64::from(s.duty)]));
+        let now = live
+            .latest
+            .as_ref()
+            .and_then(|s| s.gpu_temp.map(|t| [f64::from(t), f64::from(shown_percent(calibration, s.duty))]));
         let custom = self.custom;
 
         let response = Plot::new("curve")
@@ -483,12 +535,17 @@ impl App {
             .default_x_bounds(f64::from(*CUSTOM_TEMPS.start()), f64::from(*CUSTOM_TEMPS.end()))
             .default_y_bounds(20.0, 105.0)
             .custom_x_axes(vec![x_axis("GPU temperature °C")])
-            .custom_y_axes(vec![y_axis("Fan duty %")])
+            .custom_y_axes(vec![y_axis(if floor.is_some() { "Fan speed %" } else { "Fan duty %" })])
             .show(ui, |plot| {
                 plot.line(Line::new("Curve", line).color(p.accent).width(3.0));
                 plot.vline(
                     VLine::new("Max temp", f64::from(max_temp)).color(p.danger).width(2.0).style(LineStyle::dashed_loose()),
                 );
+                if let Some(floor) = floor {
+                    plot.hline(
+                        HLine::new("Lowest speed", f64::from(floor)).color(p.weak).width(1.5).style(LineStyle::dotted_loose()),
+                    );
+                }
                 plot.points(
                     Points::new("Points", handles)
                         .radius(if custom { 7.0 } else { 4.0 })
@@ -538,6 +595,97 @@ impl App {
         }
     }
 
+    /// Whether the curve's percentages are fan speed (calibrated) or duty, above the curve.
+    fn calibration_banner(&self, ui: &mut egui::Ui, live: &Live, service_running: bool) {
+        let p = Palette::current(ui.ctx());
+        let calibrating = live.latest.as_ref().filter(|_| service_running).and_then(|s| s.calibrating);
+        let (color, title, detail) = match (calibrating, &self.saved.calibration) {
+            (Some(progress), _) => (
+                p.accent,
+                "Calibrating".to_string(),
+                format!("{:.0} % done. The fans step from 100 % down to 30 % duty.", progress * 100.0),
+            ),
+            (None, Some(c)) => (
+                p.ok,
+                "Fans calibrated".to_string(),
+                format!("Percentages are fan speed: 100 % = {:.0} RPM, lowest {:.0} %.", c.max_rpm(), c.floor_speed()),
+            ),
+            (None, None) => (
+                p.warn,
+                "Fans not calibrated".to_string(),
+                "Percentages are PWM duty, not fan speed. Calibrate below.".to_string(),
+            ),
+        };
+        widgets::banner(ui, color, |ui| {
+            widgets::dot(ui, color);
+            ui.label(RichText::new(title).strong());
+            ui.label(RichText::new(detail).weak());
+        });
+    }
+
+    fn calibration_card(&mut self, ui: &mut egui::Ui, live: &Live, service_running: bool) {
+        let p = Palette::current(ui.ctx());
+        card_title(ui, "Fan calibration", "Measures the fans' highest RPM, so the curve's percentages are real fan speed");
+        match &self.saved.calibration {
+            Some(c) => widgets::info_grid(
+                ui,
+                "calibration",
+                &[
+                    ("Highest speed", format!("{:.0} RPM at 100 % duty", c.max_rpm())),
+                    (
+                        "Lowest speed",
+                        format!("{:.0} % ({:.0} RPM at {FLOOR_DUTY} % duty, the lowest duty used)", c.floor_speed(), c.rpm_at(FLOOR_DUTY)),
+                    ),
+                    ("Curve percentages", "Fan speed, in percent of the highest RPM".into()),
+                ],
+            ),
+            None => {
+                ui.label(
+                    RichText::new(
+                        "Not calibrated: the curve's percentages are PWM duty, and most fans turn faster than their duty \
+                         at low settings. Calibrate so 50 % means half of the fans' top speed.",
+                    )
+                    .weak(),
+                );
+            }
+        }
+
+        let latest = live.latest.as_ref().filter(|_| service_running);
+        if let Some(progress) = latest.and_then(|s| s.calibrating) {
+            ui.horizontal(|ui| {
+                ui.spinner();
+                ui.label("Calibrating: the fans run at 100 %, then step down to 30 % duty…");
+            });
+            ui.add(egui::ProgressBar::new(progress).show_percentage());
+            return;
+        }
+        let requested = self.saved.calibrate;
+        let calibrated = self.saved.calibration.is_some();
+        ui.horizontal_wrapped(|ui| {
+            let label = if calibrated { "Calibrate again" } else { "Calibrate fans" };
+            if primary_button(ui, label, service_running && !requested).clicked() {
+                self.change_calibration(|c| c.calibrate = true);
+            }
+            if calibrated && secondary_button(ui, "Remove calibration", !requested).clicked() {
+                self.change_calibration(|c| c.calibration = None);
+            }
+            if requested && service_running {
+                ui.spinner();
+                ui.label("Waiting for the service…");
+            }
+        });
+        if let Some(Err(e)) = latest.and_then(|s| s.calibration_result.as_ref()) {
+            ui.label(RichText::new(format!("Calibration failed: {e}")).color(p.danger));
+        }
+        message_label(ui, &self.calibration_message);
+        let hint = if service_running {
+            "Takes about a minute. The GPU should be cool: calibration stops at max temp."
+        } else {
+            "Calibration needs the running service (see the Service page), or run `gpu-fanctl calibrate` as administrator/root."
+        };
+        ui.label(RichText::new(hint).small().weak());
+    }
+
     fn points_editor(&mut self, ui: &mut egui::Ui) {
         const BADGE: [f32; 2] = [44.0, 32.0];
         const FIELD: [f32; 2] = [120.0, 32.0];
@@ -556,7 +704,7 @@ impl App {
                     };
                     header(ui, BADGE, "POINT");
                     header(ui, FIELD, "TEMPERATURE");
-                    header(ui, FIELD, "DUTY");
+                    header(ui, FIELD, if self.saved.calibration.is_some() { "SPEED" } else { "DUTY" });
                     ui.label("");
                     ui.end_row();
 
@@ -762,7 +910,8 @@ impl App {
                         ui.spacing_mut().item_spacing.y = 4.0;
                         if let Some(s) = &live.latest {
                             let temp = s.gpu_temp.map_or("–".into(), |t| format!("{t:.0} °C"));
-                            ui.label(RichText::new(format!("GPU {temp}  ·  Fans {:.0} %", s.duty)).small().weak());
+                            let fans = shown_percent(self.saved.calibration.as_ref(), s.duty);
+                            ui.label(RichText::new(format!("GPU {temp}  ·  Fans {fans:.0} %")).small().weak());
                         }
                         let (color, text) = service_summary(live, &p);
                         // Dot and text as one label, so they are centred together. "●" is only in
