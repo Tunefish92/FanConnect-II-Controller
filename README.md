@@ -43,7 +43,10 @@ service does the controlling. The desktop app shows live data and edits the sett
   closed and restarts automatically.
 - **One-click install** from the app. It asks for administrator approval, copies the programs to a
   fixed location, starts the service and adds Start menu / app menu and desktop shortcuts.
-- **Live data:** GPU temperature, fan duty and target, both fans' RPM, and a 10-minute history.
+- **Live data:** GPU temperature and usage, fan duty or speed and its target, both fans' RPM, and
+  a 10-minute history.
+- **Animated live view:** an illustration of the card with its FanConnect II headers and the
+  connected fans, which spin with their measured speed, and the live values as overlays.
 - **Hardware detection:** every NVIDIA card is read at startup (name, PCI IDs, VBIOS, memory,
   driver) and marked as supported or not.
 - **Warnings** when GPU Tweak III is also controlling the fans, or a fan reports 0 RPM.
@@ -56,8 +59,8 @@ service does the controlling. The desktop app shows live data and edits the sett
 
 | | |
 |---|---|
-| ![Overview](docs/screenshots/overview-dark.png) **Overview:** service status, live values and history | ![Fan curve](docs/screenshots/fan-curve-dark.png) **Fan curve:** Auto or custom curve, max GPU temp |
-| ![GPU](docs/screenshots/gpu-dark.png) **GPU:** detected cards and the fan controller | ![Service](docs/screenshots/service-dark.png) **Service:** install, reinstall or uninstall |
+| ![Overview](docs/screenshots/overview-dark.png) **Overview:** service status, live values (temperature, fan speed, both fans, GPU usage) and history | ![Fan curve](docs/screenshots/fan-curve-dark.png) **Fan curve:** Auto or custom curve, max GPU temp |
+| ![GPU](docs/screenshots/gpu-dark.png) **GPU:** animated live view, detected cards and the fan controller | ![Service](docs/screenshots/service-dark.png) **Service:** install, reinstall or uninstall |
 | ![Settings](docs/screenshots/settings-dark.png) **Settings:** theme and file locations | ![About](docs/screenshots/about-dark.png) **About:** version and technology |
 | ![Changelog](docs/screenshots/about-changelog-dark.png) **About:** changelog and credits | ![Overview, light theme](docs/screenshots/overview-light.png) **Light theme:** Overview |
 | ![Fan curve, light theme](docs/screenshots/fan-curve-light.png) **Light theme:** Fan curve | |
@@ -148,9 +151,9 @@ The same from a terminal: `gpu-fanctl install`, `gpu-fanctl reinstall`, `gpu-fan
 
 | Page | What you find there |
 |---|---|
-| **Overview** | Service status, GPU temperature, fan duty and target, both fans' RPM, 10-minute history |
+| **Overview** | Service status, GPU temperature, fan duty or speed and target, both fans' RPM in one tile, GPU usage, 10-minute history |
 | **Fan curve** | Auto or Custom, max GPU temp, the curve chart with draggable points, the points table, Apply / Revert, fan calibration |
-| **GPU** | All NVIDIA cards with name, PCI IDs, VBIOS, memory and driver; where the fan controller was found |
+| **GPU** | Animated live view of the card, its FanConnect II headers and the connected fans, with temperature, usage and fan speeds as overlays; all NVIDIA cards with name, PCI IDs, VBIOS, memory and driver; where the fan controller was found |
 | **Service** | Install, Reinstall and Uninstall the background service |
 | **Settings** | Updates (check, release notes, one-click update), theme (System / Light / Dark) and the locations of the settings and log files |
 | **About** | Version, build and technology information, changelog, credits |

@@ -42,6 +42,10 @@ pub struct Sample {
     /// Seconds since the GUI started.
     pub t: f64,
     pub gpu_temp: Option<f32>,
+    /// GPU load in percent, read by the app through NVML.
+    pub gpu_usage: Option<u32>,
+    /// Speed of the card's own fans in percent, read by the app through NVML.
+    pub gpu_fan: Option<u32>,
     /// Duty as read back from the chip, in percent.
     pub duty: f32,
     /// Duty the daemon asked for (only when the daemon is the source).
@@ -134,6 +138,8 @@ impl Direct {
         Ok(Sample {
             t,
             gpu_temp,
+            gpu_usage: None,
+            gpu_fan: None,
             duty: s.duty_percent(),
             target: None,
             fan1_rpm: s.fan1_rpm,
@@ -152,6 +158,10 @@ fn collector(live: &Mutex<Live>, ctx: &egui::Context) {
     let system = gpu::detect().map_err(|e| format!("{e:#}"));
     live.lock().unwrap_or_else(|e| e.into_inner()).system = Some(system);
     let mut direct = Direct { fc: None, gpu: None, attempt: None };
+    // The app's own NVML handle for load and fan speed, which the service doesn't publish.
+    // NVML needs no privileges.
+    let mut nvml: Option<Gpu> = None;
+    let mut nvml_attempt: Option<Instant> = None;
     loop {
         let tick = Instant::now();
         let t = started.elapsed().as_secs_f64();
@@ -166,6 +176,8 @@ fn collector(live: &Mutex<Live>, ctx: &egui::Context) {
                 let sample = Sample {
                     t,
                     gpu_temp: s.gpu_temp,
+                    gpu_usage: None,
+                    gpu_fan: None,
                     duty: curve::reg_to_duty(s.duty_reg),
                     target: Some(s.target_duty),
                     fan1_rpm: s.fan1_rpm,
@@ -186,6 +198,23 @@ fn collector(live: &Mutex<Live>, ctx: &egui::Context) {
                 }
             }
         };
+
+        if nvml.is_none() && nvml_attempt.is_none_or(|a| a.elapsed() >= DIRECT_RETRY) {
+            nvml_attempt = Some(Instant::now());
+            nvml = Gpu::open(None).ok();
+        }
+        let sample = sample.map(|mut sample| {
+            if let Some(gpu) = &nvml {
+                match gpu.utilization() {
+                    Ok(usage) => {
+                        sample.gpu_usage = Some(usage);
+                        sample.gpu_fan = gpu.fan_percent().ok();
+                    }
+                    Err(_) => nvml = None,
+                }
+            }
+            sample
+        });
 
         {
             let mut l = live.lock().unwrap_or_else(|e| e.into_inner());

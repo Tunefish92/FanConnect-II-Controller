@@ -5,6 +5,7 @@
 
 mod about;
 mod app;
+mod card_art;
 mod elevate;
 mod gpu;
 mod live;

@@ -2,6 +2,7 @@
 //! supported, and where the FanConnect II controller was found.
 
 use eframe::egui::{self, CornerRadius, Margin, RichText};
+use gpu_fanctl::calibration::Calibration;
 use gpu_fanctl::fanconnect::{ADDRESS, PORT, SUPPORTED_CARDS, format_pci_ids};
 use gpu_fanctl::gpu::GpuInfo;
 
@@ -43,8 +44,13 @@ fn gpu_entry(ui: &mut egui::Ui, index: usize, gpu: &GpuInfo, driver: &str) {
         });
 }
 
-pub fn page(ui: &mut egui::Ui, live: &Live) {
+pub fn page(ui: &mut egui::Ui, live: &Live, calibration: Option<&Calibration>) {
     let p = Palette::current(ui.ctx());
+
+    card(ui, |ui| {
+        card_title(ui, "Live view", "The card, its FanConnect II headers and the fans connected to them");
+        crate::card_art::show(ui, live, calibration);
+    });
 
     card(ui, |ui| {
         card_title(ui, "Graphics cards", "Read from the NVIDIA driver when the app starts");

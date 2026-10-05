@@ -115,6 +115,36 @@ pub fn stat_card(ui: &mut Ui, caption: &str, value: &str, unit: &str, color: Col
     });
 }
 
+/// A statistic tile for both fans: each fan's value and detail line side by side. It has the same
+/// rows as `stat_card`, so it is exactly as tall as the tiles next to it.
+pub fn fans_card(ui: &mut Ui, caption: &str, fans: [(&str, &str); 2], color: Color32) {
+    card(ui, |ui| {
+        ui.vertical_centered(|ui| {
+            ui.add(egui::Label::new(RichText::new(caption).small().weak()).truncate());
+
+            ui.columns(2, |columns| {
+                for (column, (value, _)) in columns.iter_mut().zip(fans) {
+                    let mut value_text = egui::text::LayoutJob::default();
+                    let format = |size: f32| egui::TextFormat { font_id: egui::FontId::proportional(size), color, ..Default::default() };
+                    // A space in `stat_card`'s value size gives this row the same height.
+                    value_text.append(" ", 0.0, format(36.0));
+                    value_text.append(value, 0.0, format(27.0));
+                    column.vertical_centered(|ui| ui.add(egui::Label::new(value_text).truncate()));
+                }
+            });
+
+            // The bar row of `stat_card`, kept empty.
+            ui.allocate_exact_size(vec2(ui.available_width(), 6.0), egui::Sense::hover());
+
+            ui.columns(2, |columns| {
+                for (column, (_, detail)) in columns.iter_mut().zip(fans) {
+                    column.vertical_centered(|ui| ui.add(egui::Label::new(RichText::new(detail).small().weak()).truncate()));
+                }
+            });
+        });
+    });
+}
+
 /// An entry in the navigation pane.
 pub fn nav_item(ui: &mut Ui, icon: &str, label: &str, selected: bool) -> Response {
     let p = Palette::current(ui.ctx());

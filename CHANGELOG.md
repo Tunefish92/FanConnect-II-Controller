@@ -4,6 +4,23 @@ All notable changes to FanConnect II Controller are listed here.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and the project uses
 [Semantic Versioning](https://semver.org/).
 
+## [0.3.0] - 2026-10-05
+
+### Added
+
+- Live view on the GPU page: an animated illustration of the graphics card with its three fans,
+  the two FanConnect II headers on its end and the case fans connected to them. The fans spin
+  with their measured speed (slowed down), the card's light strip follows the GPU temperature,
+  and small overlay tiles show GPU temperature, GPU usage, fan speed and both fans' RPM.
+- GPU usage: a new tile on the Overview and in the live view, read from the NVIDIA driver by the
+  app itself, so it works with any installed service version.
+
+### Changed
+
+- Overview: Fan 1 and Fan 2 share one compact tile, with each fan's RPM and its share of the top
+  speed. The tiles are GPU temperature, fan speed, fans and GPU usage.
+- The README has a "Buy me a coffee" section.
+
 ## [0.2.0] - 2026-09-27
 
 ### Added

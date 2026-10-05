@@ -89,4 +89,14 @@ impl Gpu {
     pub fn temperature(&self) -> Result<u32> {
         Ok(self.nvml.device_by_index(self.index)?.temperature(TemperatureSensor::Gpu)?)
     }
+
+    /// GPU load in percent.
+    pub fn utilization(&self) -> Result<u32> {
+        Ok(self.nvml.device_by_index(self.index)?.utilization_rates()?.gpu)
+    }
+
+    /// Speed of the card's own fans in percent of their maximum (0 while they are stopped).
+    pub fn fan_percent(&self) -> Result<u32> {
+        Ok(self.nvml.device_by_index(self.index)?.fan_speed(0)?)
+    }
 }

@@ -319,7 +319,7 @@ impl eframe::App for App {
                         }
                         Page::Gpu => {
                             widgets::page_header(ui, "GPU", "The graphics card and its FanConnect II controller");
-                            crate::gpu::page(ui, &live);
+                            crate::gpu::page(ui, &live, self.saved.calibration.as_ref());
                         }
                         Page::Service => {
                             widgets::page_header(
@@ -390,6 +390,7 @@ fn stat_cards(ui: &mut egui::Ui, live: &Live, calibration: Option<&Calibration>)
     let p = Palette::current(ui.ctx());
     let s = live.latest.as_ref();
     let temp = s.and_then(|s| s.gpu_temp).map_or("–".into(), |t| format!("{t:.0}"));
+    let usage = s.and_then(|s| s.gpu_usage).map_or("–".into(), |u| u.to_string());
     let percent = s.map(|s| shown_percent(calibration, s.duty));
     let duty = percent.map_or("–".into(), |d| format!("{d:.0}"));
     let target = s.and_then(|s| s.target).map_or(String::new(), |t| format!("Target {:.0} %", shown_percent(calibration, t)));
@@ -399,11 +400,14 @@ fn stat_cards(ui: &mut egui::Ui, live: &Live, calibration: Option<&Calibration>)
         MODE_AUTO => "Card auto mode",
         _ => "Unknown mode",
     });
-    let fan = |rpm: u32| {
+    let fan = |name: &str, rpm: u32| {
         if rpm == 0 && s.is_some_and(|s| s.duty >= FLOOR_DUTY) {
-            "⚠ Reports 0 RPM".to_string()
+            format!("⚠ {name}: 0 RPM")
         } else {
-            calibration.filter(|_| s.is_some()).map_or(String::new(), |c| format!("{:.0} % of max", rpm as f32 * 100.0 / c.max_rpm()))
+            match calibration.filter(|_| s.is_some()) {
+                Some(c) => format!("{name} · {:.0} %", rpm as f32 * 100.0 / c.max_rpm()),
+                None => name.to_string(),
+            }
         }
     };
     let rpm1 = s.map_or(0, |s| s.fan1_rpm);
@@ -413,8 +417,13 @@ fn stat_cards(ui: &mut egui::Ui, live: &Live, calibration: Option<&Calibration>)
     let tile = |ui: &mut egui::Ui, index: usize| match index {
         0 => widgets::stat_card(ui, "GPU TEMPERATURE", &temp, "°C", p.temp, mode, None),
         1 => widgets::stat_card(ui, fans_caption, &duty, "%", p.accent, &target, percent.map(|d| d / 100.0)),
-        2 => widgets::stat_card(ui, "FAN 1", &rpm_text(rpm1), "RPM", p.text, &fan(rpm1), None),
-        _ => widgets::stat_card(ui, "FAN 2", &rpm_text(rpm2), "RPM", p.text, &fan(rpm2), None),
+        2 => widgets::fans_card(
+            ui,
+            "FANS · RPM",
+            [(&rpm_text(rpm1), &fan("Fan 1", rpm1)), (&rpm_text(rpm2), &fan("Fan 2", rpm2))],
+            p.text,
+        ),
+        _ => widgets::stat_card(ui, "GPU USAGE", &usage, "%", p.ok, "", s.and_then(|s| s.gpu_usage).map(|u| u as f32 / 100.0)),
     };
     let per_row = if ui.available_width() >= WIDE_LAYOUT { 4 } else { 2 };
     for first in (0..4).step_by(per_row) {
