@@ -28,6 +28,7 @@ service does the controlling. The desktop app shows live data and edits the sett
 - [Adding support for another card](#adding-support-for-another-card)
 - [Development](#development)
 - [Buy me a coffee](#buy-me-a-coffee)
+- [A note about this project](#a-note-about-this-project)
 
 ## Features
 
@@ -324,6 +325,12 @@ fans quiet and you'd like to say thanks, you can buy me a coffee:
 It's entirely voluntary and a thank-you only: it doesn't buy features, priority support or a
 warranty, and the software stays under the MIT license either way. Please don't send money as
 "Friends and Family" on PayPal.
+
+## A note about this project
+
+I'm a hobby programmer with an interest in coding and software development. I can read and write code, but for this project, I used Claude AI as a development assistant to help me turn my ideas into a working project.
+
+I believe AI is a useful tool for learning, experimenting, and bringing ideas to life. I want to be transparent about how this project was created and acknowledge the role AI played in its development.
 
 ## Credits
 
